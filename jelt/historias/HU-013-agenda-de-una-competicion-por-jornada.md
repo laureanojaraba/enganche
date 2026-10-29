@@ -2,7 +2,7 @@
 id: HU-013
 title: Agenda de una competición por jornada
 epic: EP-004
-status: ba-review
+status: approved
 priority: medium
 points: 3
 jira: LDZ-20

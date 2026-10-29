@@ -2,7 +2,7 @@
 id: HU-016
 title: Alineaciones del partido
 epic: EP-005
-status: ba-review
+status: approved
 priority: medium
 points: 2
 jira: LDZ-23
