@@ -2,12 +2,12 @@
 id: HU-023
 title: Navegación responsive
 epic: EP-007
-status: verifying
+status: done
 priority: high
 points: 3
 jira: LDZ-30
 updated: 2026-10-29
-jira_hash: 6152469eef3d
+jira_hash: 46abf9eea3f8
 ---
 # HU-023 — Navegación responsive
 
