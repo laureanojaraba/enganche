@@ -2,7 +2,7 @@
 id: HU-009
 title: Marcar equipos y competiciones como favoritos
 epic: EP-003
-status: ba-review
+status: approved
 priority: high
 points: 3
 jira: LDZ-16

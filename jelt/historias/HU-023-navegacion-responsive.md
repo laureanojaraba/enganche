@@ -2,7 +2,7 @@
 id: HU-023
 title: Navegación responsive
 epic: EP-007
-status: ba-review
+status: approved
 priority: high
 points: 3
 jira: LDZ-30

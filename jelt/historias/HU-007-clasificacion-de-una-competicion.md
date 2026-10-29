@@ -2,7 +2,7 @@
 id: HU-007
 title: Clasificación de una competición
 epic: EP-002
-status: ba-review
+status: approved
 priority: high
 points: 3
 jira: LDZ-14

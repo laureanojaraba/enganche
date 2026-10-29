@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+/* Paleta propia: verde césped + tinta neutra. Se usa como bg-pitch-600, text-ink-500, etc. */
+@theme {
+  --color-pitch-50: oklch(0.98 0.02 150);
+  --color-pitch-100: oklch(0.95 0.04 150);
+  --color-pitch-200: oklch(0.9 0.06 150);
+  --color-pitch-300: oklch(0.82 0.1 150);
+  --color-pitch-500: oklch(0.64 0.15 150);
+  --color-pitch-600: oklch(0.55 0.15 150);
+  --color-pitch-700: oklch(0.46 0.13 150);
+  --color-pitch-800: oklch(0.32 0.08 150);
+  --color-pitch-900: oklch(0.24 0.05 150);
+  --color-pitch-950: oklch(0.17 0.03 150);
+  --color-ink-50: oklch(0.98 0 0);
+  --color-ink-200: oklch(0.9 0 0);
+  --color-ink-400: oklch(0.7 0 0);
+  --color-ink-500: oklch(0.55 0 0);
+  --color-ink-700: oklch(0.37 0 0);
+  --color-ink-900: oklch(0.2 0 0);
+}

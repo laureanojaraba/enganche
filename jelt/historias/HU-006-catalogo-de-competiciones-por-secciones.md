@@ -2,12 +2,12 @@
 id: HU-006
 title: Catálogo de competiciones por secciones
 epic: EP-002
-status: approved
+status: verifying
 priority: high
 points: 3
 jira: LDZ-13
 updated: 2026-10-29
-jira_hash: fb7f4a163869
+jira_hash: 07c5f746a9c0
 ---
 # HU-006 — Catálogo de competiciones por secciones
 
@@ -33,11 +33,12 @@ jira_hash: fb7f4a163869
 - Verify: `npm test -w apps/web -- competitions-page -t "HU-006 AC3"`
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [ ] Textos de la interfaz en los catálogos de español e inglés (pendiente: i18n llega en HU-021)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada y verificada: AC1–AC3 OK; 0 peticiones a API-Football (datos precargados) | PLAN-006 |

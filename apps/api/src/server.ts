@@ -8,7 +8,7 @@ try {
 }
 
 const config = loadConfig();
-const app = buildApp(config, { logger: true });
+const app = buildApp(config, {}, { logger: true });
 
 app.listen({ port: config.port, host: '0.0.0.0' }).catch((err) => {
   app.log.error(err);
