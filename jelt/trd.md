@@ -130,6 +130,8 @@ Países: CO (por defecto), AR, MX, CL, PE, EC y US. Un override de partido susti
      | Equipos y competiciones | 24 h |
 
   4. **Protección:** si `/status` indica menos de un 10 % de cuota, la API sirve solo desde caché y lo anota en el log.
+- **Quién gasta cuota (BUG-002):** con el reloj simulado el servidor solo lee los datos descargados (`SnapshotSource`); únicamente `npm run seed` llama a la red. Con el reloj real (plan premium), `HttpSource` → `CachedSource` (TTL) con cola acotada (20) y caché en memoria LRU (500).
+- **Claves de caché (BUG-001):** prefijo legible + SHA-1 de la petición canónica; los archivos antiguos se migran solos al arrancar.
 - **Si el proveedor falla:** se sirve el último dato cacheado con `stale: true` y su `updatedAt`. La interfaz muestra "Actualizado hace X min".
 - **Fixtures de test:** `SnapshotProvider` lee los JSON grabados en `apps/api/test/fixtures/`, que sí se versionan. Los tests nunca llaman a la API real.
 
@@ -164,7 +166,9 @@ Los favoritos se envían como parámetros de consulta porque el servidor no tien
 ## 6. Seguridad y gestión de secretos
 - `API_FOOTBALL_KEY` vive solo en `apps/api/.env`, que no se versiona. Se incluye un `.env.example` sin valores.
 - CORS restringido al origen del frontend.
-- Rate limit por IP en nuestra API (`@fastify/rate-limit`) para que nadie agote la cuota del proveedor.
+- Rate limit por IP en nuestra API (`@fastify/rate-limit`, 120 peticiones por minuto, `RATE_LIMIT_MAX`) para que nadie agote la cuota del proveedor.
+- Errores: datos no disponibles → `503 DATA_UNAVAILABLE`; el resto → `500 INTERNAL`. Nunca se devuelven mensajes internos del proveedor.
+- Filtros de los endpoints validados: `round` (regex, hasta 40 caracteres), `from` ≤ `to` y rango de 31 días como máximo.
 - Todos los parámetros de entrada se validan con Zod. Los IDs de competición deben pertenecer a la lista soportada.
 - Cabeceras de seguridad con `@fastify/helmet`. No hay datos personales en el MVP.
 

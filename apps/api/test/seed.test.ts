@@ -77,7 +77,7 @@ describe('seed', () => {
 
     const details = up.calls.slice(40);
     expect(details).toHaveLength(20); // 2 fixtures in the window × 10 competitions
-    expect(details.every((k) => /^fixtures__id-\d+$/.test(k))).toBe(true);
+    expect(details.every((k) => /^fixtures__id-\d+-[0-9a-f]{16}$/.test(k))).toBe(true);
     expect(details).toContain(cacheKey('/fixtures', { id: 23902 }));
     expect(details).not.toContain(cacheKey('/fixtures', { id: 23901 }));
   });

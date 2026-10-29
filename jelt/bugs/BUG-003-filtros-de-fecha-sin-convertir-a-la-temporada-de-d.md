@@ -1,12 +1,12 @@
 ---
 id: BUG-003
 title: Filtros de fecha sin convertir a la temporada de datos en modo simulado
-status: triaged
+status: fixed
 severity: medium
 story: HU-005
 jira: LDZ-35
 updated: 2026-10-29
-jira_hash: 062e7f3cb8b3
+jira_hash: ff9110d00f9e
 ---
 # BUG-003 — Filtros de fecha sin convertir a la temporada de datos en modo simulado
 
@@ -27,7 +27,7 @@ La API convierte `from` y `to` a la temporada de datos (2024) antes de consultar
 REV-001 hallazgo #3.
 
 ## Causa raíz
-<!-- Se rellena al corregir. -->
+En modo simulado, `MatchService.listFixtures` pasaba al proveedor las fechas de pantalla (2026). **Corrección:** en modo simulado se lee el calendario completo de la temporada (ya precargado, sin claves nuevas ni red) y se filtra localmente por días de pantalla (comparando la fecha proyectada de cada partido) y por jornada. Con el reloj real, los filtros se pasan al proveedor tal cual.
 
 ## Test de regresión
 - Verify: `npm test -w apps/api -- clock -t "BUG-003"`

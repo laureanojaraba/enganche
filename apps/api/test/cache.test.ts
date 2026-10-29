@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { CachedSource, ttlFor } from '../src/providers/cached-source';
-import { cacheKey } from '../src/providers/cache-key';
+import { cacheKey, migrateCacheDir } from '../src/providers/cache-key';
 import { HttpSource, QuotaCounter } from '../src/providers/http-source';
 import { ProviderUnavailableError, type Params, type Source } from '../src/providers/source';
 
@@ -179,5 +179,40 @@ describe('HttpSource quota sync', () => {
     for (let i = 0; i < 10; i++) quota.increment();
     quota.syncRemaining(95);
     expect(quota.remaining()).toBe(90);
+  });
+});
+
+describe('cacheKey (BUG-001)', () => {
+  it('BUG-001 gives different keys to different requests', () => {
+    expect(cacheKey('/fixtures', { round: 'Regular Season - 12' })).not.toBe(
+      cacheKey('/fixtures', { round: 'Regular?Season - 12' }),
+    );
+    expect(cacheKey('/x', { a: '1_b-2' })).not.toBe(cacheKey('/x', { a: 1, b: 2 }));
+    expect(cacheKey('/fixtures', { id: 1 })).not.toBe(cacheKey('/fixtures/events', { id: 1 }));
+  });
+
+  it('BUG-001 is stable across param order and number/string values, and filesystem-safe', () => {
+    const a = cacheKey('/fixtures', { league: 239, season: 2024 });
+    expect(a).toBe(cacheKey('/fixtures', { season: '2024', league: '239' }));
+    expect(a).toMatch(/^[a-z0-9._-]+$/i);
+    expect(a.startsWith('fixtures__league-239_season-2024-')).toBe(true);
+    expect(cacheKey('/fixtures', { round: 'x'.repeat(500) }).length).toBeLessThanOrEqual(100);
+  });
+
+  it('BUG-001 migrates old cache files to the new keys without network', () => {
+    fs.writeFileSync(
+      path.join(dir, 'fixtures__league-239_season-2024.json'),
+      JSON.stringify({
+        storedAt: 1,
+        body: { get: 'fixtures', parameters: { league: '239', season: '2024' } },
+      }),
+    );
+    fs.writeFileSync(path.join(dir, 'quota.json'), JSON.stringify({ day: '2026-10-29', used: 91 }));
+    expect(migrateCacheDir(dir)).toBe(1);
+    expect(
+      fs.existsSync(path.join(dir, `${cacheKey('/fixtures', { league: 239, season: 2024 })}.json`)),
+    ).toBe(true);
+    expect(fs.existsSync(path.join(dir, 'quota.json'))).toBe(true);
+    expect(migrateCacheDir(dir)).toBe(0);
   });
 });

@@ -149,3 +149,64 @@ describe('simulated listings', () => {
     expect(data[0]).toMatchObject({ status: 'live', minute: 61, score: null });
   });
 });
+
+describe('date filters in simulated mode (BUG-003)', () => {
+  it('BUG-003 converts display dates to data dates and filters the cached season calendar', async () => {
+    const seen: Array<Record<string, unknown>> = [];
+    const spy = {
+      get: async <T>(_p: string, params: Record<string, unknown> = {}) => {
+        seen.push(params);
+        return {
+          body: fixtures as T,
+          meta: { updatedAt: '2026-10-29T12:00:00.000Z', stale: false, source: 'snapshot' as const },
+        };
+      },
+    };
+    // Anchor 2024-11-01 21:00 data time = 2026-10-29 15:00 real time.
+    const svc = new MatchService(new ApiFootballProvider(spy), clockAt(Date.parse('2024-11-01T21:00:00Z')));
+    const { data } = await svc.listFixtures({
+      league: 239,
+      season: 2024,
+      from: '2026-10-29',
+      to: '2026-10-29',
+    });
+
+    // The season calendar (already downloaded by the seed) is filtered locally: no new cache keys.
+    expect(seen[0]).toEqual({ league: 239, season: 2024 });
+    expect(data.map((m) => m.id)).toEqual([1234296, 1234301]);
+    expect(data.every((m) => m.kickoffUtc.startsWith('2026-10-29'))).toBe(true);
+  });
+
+  it('BUG-003 leaves dates untouched with the real clock', async () => {
+    const seen: Array<Record<string, unknown>> = [];
+    const spy = {
+      get: async <T>(_p: string, params: Record<string, unknown> = {}) => {
+        seen.push(params);
+        return { body: fixtures as T, meta: { updatedAt: 'x', stale: false, source: 'live' as const } };
+      },
+    };
+    await new MatchService(new ApiFootballProvider(spy), new RealClock()).listFixtures({
+      league: 239,
+      season: 2024,
+      from: '2024-11-01',
+      to: '2024-11-02',
+    });
+    expect(seen[0]).toMatchObject({ from: '2024-11-01', to: '2024-11-02' });
+  });
+});
+
+it('BUG-003 filters by round locally in simulated mode', async () => {
+  const seen: Array<Record<string, unknown>> = [];
+  const spy = {
+    get: async <T>(_p: string, params: Record<string, unknown> = {}) => {
+      seen.push(params);
+      return { body: fixtures as T, meta: { updatedAt: 'x', stale: false, source: 'snapshot' as const } };
+    },
+  };
+  const svc = new MatchService(new ApiFootballProvider(spy), clockAt(Date.parse('2024-11-01T21:00:00Z')));
+  const { data } = await svc.listFixtures({ league: 239, season: 2024, round: 'Clausura - 16' });
+  expect(seen[0]).toEqual({ league: 239, season: 2024 });
+  expect(data).toHaveLength(3);
+  const none = await svc.listFixtures({ league: 239, season: 2024, round: 'Clausura - 1' });
+  expect(none.data).toHaveLength(0);
+});
