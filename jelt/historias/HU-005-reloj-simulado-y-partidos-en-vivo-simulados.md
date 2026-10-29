@@ -2,12 +2,12 @@
 id: HU-005
 title: Reloj simulado y partidos en vivo simulados
 epic: EP-001
-status: verifying
+status: done
 priority: high
 points: 5
 jira: LDZ-12
 updated: 2026-10-29
-jira_hash: a346b40a3379
+jira_hash: ff827694b937
 ---
 # HU-005 — Reloj simulado y partidos en vivo simulados
 
