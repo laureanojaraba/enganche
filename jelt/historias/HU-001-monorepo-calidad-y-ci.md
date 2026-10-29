@@ -2,12 +2,12 @@
 id: HU-001
 title: Monorepo, calidad y CI
 epic: EP-001
-status: verifying
+status: done
 priority: high
 points: 3
 jira: LDZ-2
 updated: 2026-10-29
-jira_hash: d7c035e6572b
+jira_hash: feb965ac09c4
 ---
 # HU-001 — Monorepo, calidad y CI
 
