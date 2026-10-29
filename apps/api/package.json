@@ -9,7 +9,8 @@
     "start": "node dist/server.js",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "spike:coverage": "tsx src/spikes/coverage-cli.ts"
+    "spike:coverage": "tsx src/spikes/coverage-cli.ts",
+    "seed": "tsx src/seed/seed-cli.ts"
   },
   "dependencies": {
     "@enganche/shared": "^0.1.0",

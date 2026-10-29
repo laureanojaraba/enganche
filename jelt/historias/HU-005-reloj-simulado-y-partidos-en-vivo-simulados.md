@@ -7,7 +7,7 @@ priority: high
 points: 5
 jira: LDZ-12
 updated: 2026-10-29
-jira_hash: 07a4830db2e1
+jira_hash: 9ccae1acb02d
 ---
 # HU-005 — Reloj simulado y partidos en vivo simulados
 
@@ -37,6 +37,9 @@ jira_hash: 07a4830db2e1
 - **Cuando** se consulta cualquier partido
 - **Entonces** las fechas y estados se devuelven tal como vienen del proveedor
 - Verify: `npm test -w apps/api -- clock -t "HU-005 AC4"`
+
+## Notas técnicas
+- Hallazgo de HU-004: con `SIM_ANCHOR=2024-11-09` hay partidos de las 6 ligas (6–10 por liga), pero ninguno de las 4 copas internacionales (8–10 nov 2024). Para que la demo muestre copas, elige un ancla con jornada de copa (p. ej. martes/miércoles de Champions) o permite varias anclas, y precarga sus fichas con `SEED_WINDOW_DAYS` o una segunda ejecución.
 
 ## Definición de Hecho
 - [ ] Todos los AC tienen un test que pasa

@@ -42,9 +42,18 @@ export class QuotaCounter {
   }
 
   increment() {
-    const data = this.read();
+    this.write(this.read().used + 1);
+  }
+
+  /** Aligns with the provider's own count (response header); only ever raises the local count. */
+  syncRemaining(remaining: number) {
+    const used = this.limit - remaining;
+    if (used > this.read().used) this.write(used);
+  }
+
+  private write(used: number) {
     fs.mkdirSync(path.dirname(this.file), { recursive: true });
-    fs.writeFileSync(this.file, JSON.stringify({ day: data.day, used: data.used + 1 }));
+    fs.writeFileSync(this.file, JSON.stringify({ day: this.today(), used }));
   }
 }
 
@@ -94,6 +103,10 @@ export class HttpSource implements Source {
 
     this.opts.quota.increment();
     const res = await this.opts.fetch(url, { headers: { 'x-apisports-key': this.opts.apiKey } });
+    const remaining = Number(res.headers.get('x-ratelimit-requests-remaining'));
+    if (res.headers.has('x-ratelimit-requests-remaining') && Number.isFinite(remaining)) {
+      this.opts.quota.syncRemaining(remaining);
+    }
     if (!res.ok) throw new ProviderError(`API-Football ${res.status} on ${path}`);
     const body = (await res.json()) as T & { errors?: unknown };
     const errors = body.errors;

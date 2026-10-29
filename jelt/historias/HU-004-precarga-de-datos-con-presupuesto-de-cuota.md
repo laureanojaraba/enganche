@@ -2,12 +2,12 @@
 id: HU-004
 title: Precarga de datos con presupuesto de cuota
 epic: EP-001
-status: approved
+status: verifying
 priority: high
 points: 3
 jira: LDZ-11
 updated: 2026-10-29
-jira_hash: fa751395e866
+jira_hash: 2392233efcb5
 ---
 # HU-004 — Precarga de datos con presupuesto de cuota
 
@@ -33,11 +33,12 @@ jira_hash: fa751395e866
 - Verify: `npm test -w apps/api -- seed -t "HU-004 AC3"`
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [x] Textos de la interfaz: no aplica (script interno)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada y verificada: AC1–AC3 OK. Precarga real día 1: fase 1 completa (40) + 30 de 53 fichas; la cuota real detuvo la ejecución en 9 restantes | PLAN-004 |
