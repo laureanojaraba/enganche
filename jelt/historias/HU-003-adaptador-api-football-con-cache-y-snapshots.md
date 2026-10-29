@@ -2,12 +2,12 @@
 id: HU-003
 title: Adaptador API-Football con caché y snapshots
 epic: EP-001
-status: verifying
+status: done
 priority: high
 points: 5
 jira: LDZ-10
 updated: 2026-10-29
-jira_hash: 3ee1dd945b9b
+jira_hash: 81f0095556e0
 ---
 # HU-003 — Adaptador API-Football con caché y snapshots
 
