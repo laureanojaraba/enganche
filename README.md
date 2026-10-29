@@ -44,3 +44,14 @@ npm run dev                               # web en http://localhost:5173 · API 
 | `API_FOOTBALL_KEY` | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                      |
 | `CLOCK_MODE`       | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual |
 | `SIM_ANCHOR`       | `2024-11-09T18:00:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                 |
+
+## Ramas y ambientes
+
+| Rama            | Ambiente                                             |
+| --------------- | ---------------------------------------------------- |
+| `feat/HU-xxx-*` | Local: una rama por historia, creada desde `develop` |
+| `develop`       | Desarrollo: integración de historias                 |
+| `staging`       | Pruebas con el BA y usuarios externos                |
+| `main`          | Producción                                           |
+
+Flujo: `feat/*` → PR a `develop` → PR a `staging` → PR a `main`. El CI se ejecuta en cada PR y push a las tres ramas.

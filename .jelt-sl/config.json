@@ -27,5 +27,13 @@
       "inProgress": "In Progress",
       "done": "Done"
     }
+  },
+  "git": {
+    "integrationBranch": "develop",
+    "branches": {
+      "develop": "desarrollo",
+      "staging": "pruebas con externos",
+      "main": "producción"
+    }
   }
 }
