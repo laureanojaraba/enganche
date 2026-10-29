@@ -1,0 +1,49 @@
+---
+id: HU-005
+title: Reloj simulado y partidos en vivo simulados
+epic: EP-001
+status: ba-review
+priority: high
+points: 5
+jira: LDZ-12
+updated: 2026-10-29
+jira_hash: 07a4830db2e1
+---
+# HU-005 — Reloj simulado y partidos en vivo simulados
+
+**Como** usuario de la demo, **quiero** ver la temporada 2024 como si se jugara hoy, con partidos en vivo, **para** probar la app completa sin un plan premium.
+
+## Criterios de aceptación
+### AC1 — Reproyección de fechas
+- **Dado** `CLOCK_MODE=simulated` y `SIM_ANCHOR=2024-11-09T18:00:00Z`
+- **Cuando** la API devuelve un partido jugado el 2024-11-09 a las 20:00 UTC
+- **Entonces** su `kickoffUtc` corresponde a hoy, 2 horas después del arranque del servidor (desplazamiento = ahora real − ancla)
+- Verify: `npm test -w apps/api -- clock -t "HU-005 AC1"`
+
+### AC2 — Estado derivado del reloj
+- **Dado** un partido de 2024 ya finalizado en el proveedor
+- **Cuando** según el reloj simulado aún no ha empezado, está en curso o ha terminado
+- **Entonces** su estado es `scheduled`, `live` (con el minuto calculado) o `finished`, respectivamente
+- Verify: `npm test -w apps/api -- clock -t "HU-005 AC2"`
+
+### AC3 — Eventos hasta el minuto actual
+- **Dado** un partido simulado en el minuto 55
+- **Cuando** pido su ficha
+- **Entonces** solo aparecen los eventos hasta el minuto 55, y el marcador corresponde a esos eventos
+- Verify: `npm test -w apps/api -- clock -t "HU-005 AC3"`
+
+### AC4 — Modo real
+- **Dado** `CLOCK_MODE=real`
+- **Cuando** se consulta cualquier partido
+- **Entonces** las fechas y estados se devuelven tal como vienen del proveedor
+- Verify: `npm test -w apps/api -- clock -t "HU-005 AC4"`
+
+## Definición de Hecho
+- [ ] Todos los AC tienen un test que pasa
+- [ ] Revisión de código hecha
+- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+
+## Historial
+| Fecha | Cambio | Origen |
+|---|---|---|
+| 2026-10-29 | Creación | — |

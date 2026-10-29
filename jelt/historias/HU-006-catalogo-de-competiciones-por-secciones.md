@@ -1,0 +1,43 @@
+---
+id: HU-006
+title: Catálogo de competiciones por secciones
+epic: EP-002
+status: ba-review
+priority: high
+points: 3
+jira: LDZ-13
+updated: 2026-10-29
+jira_hash: fb7f4a163869
+---
+# HU-006 — Catálogo de competiciones por secciones
+
+**Como** Andrés, **quiero** ver las competiciones organizadas en Ligas e Internacionales, **para** encontrar rápido la que me interesa.
+
+## Criterios de aceptación
+### AC1 — Secciones
+- **Dado** que abro "Competiciones"
+- **Cuando** carga la página
+- **Entonces** veo la sección **Ligas** (BetPlay, Argentina, Serie A, Premier, LaLiga, Brasileirão) y la sección **Internacionales** (Libertadores, Sudamericana, Champions, Europa League), cada una con logo y país o confederación
+- Verify: `npm test -w apps/web -- competitions-page -t "HU-006 AC1"`
+
+### AC2 — Solo competiciones soportadas
+- **Dado** que se pide a la API una competición fuera de la lista (p. ej. el ID de la liga de Ecuador)
+- **Cuando** se llama a `/api/competitions/:id/matches`
+- **Entonces** responde `404` con un mensaje claro
+- Verify: `npm test -w apps/api -- competitions -t "HU-006 AC2"`
+
+### AC3 — Navegación
+- **Dado** el catálogo
+- **Cuando** pulso una competición
+- **Entonces** voy a su página con las pestañas Partidos y Clasificación
+- Verify: `npm test -w apps/web -- competitions-page -t "HU-006 AC3"`
+
+## Definición de Hecho
+- [ ] Todos los AC tienen un test que pasa
+- [ ] Revisión de código hecha
+- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+
+## Historial
+| Fecha | Cambio | Origen |
+|---|---|---|
+| 2026-10-29 | Creación | — |

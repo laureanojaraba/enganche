@@ -1,0 +1,31 @@
+{
+  "name": "ladiez",
+  "language": "es",
+  "docsDir": "jelt",
+  "profile": "standard",
+  "requireBaApproval": true,
+  "jira": {
+    "enabled": true,
+    "baseUrl": "https://jelt-sl.atlassian.net",
+    "projectKey": "LDZ",
+    "issueTypes": {
+      "epic": "Epic",
+      "story": "Story",
+      "bug": "Bug",
+      "cr": "Task"
+    },
+    "labels": {
+      "managed": "jelt-sl",
+      "review": "ba-review",
+      "approved": "ba-approved",
+      "changes": "ba-changes",
+      "rework": "in-rework",
+      "cr": "change-request"
+    },
+    "statuses": {
+      "todo": "To Do",
+      "inProgress": "In Progress",
+      "done": "Done"
+    }
+  }
+}
