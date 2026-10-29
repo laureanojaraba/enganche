@@ -1,0 +1,227 @@
+{
+  "get": "fixtures",
+  "parameters": {
+    "league": "239",
+    "season": "2024",
+    "from": "2024-11-01",
+    "to": "2024-11-15"
+  },
+  "errors": [],
+  "results": 3,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "fixture": {
+        "id": 1234296,
+        "referee": "F. Trujillo",
+        "timezone": "UTC",
+        "date": "2024-11-01T22:00:00+00:00",
+        "timestamp": 1730498400,
+        "periods": {
+          "first": 1730498400,
+          "second": 1730502000
+        },
+        "venue": {
+          "id": 1779,
+          "name": "Estadio de Fútbol Jaraguay de Montería",
+          "city": "Montería"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 7
+        }
+      },
+      "league": {
+        "id": 239,
+        "name": "Primera A",
+        "country": "Colombia",
+        "logo": "https://media.api-sports.io/football/leagues/239.png",
+        "flag": "https://media.api-sports.io/flags/co.svg",
+        "season": 2024,
+        "round": "Clausura - 16",
+        "standings": true
+      },
+      "teams": {
+        "home": {
+          "id": 1133,
+          "name": "Jaguares",
+          "logo": "https://media.api-sports.io/football/teams/1133.png",
+          "winner": false
+        },
+        "away": {
+          "id": 1462,
+          "name": "Deportivo Pereira",
+          "logo": "https://media.api-sports.io/football/teams/1462.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 2
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 2
+        },
+        "fulltime": {
+          "home": 1,
+          "away": 2
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1234301,
+        "referee": "L. Matorel",
+        "timezone": "UTC",
+        "date": "2024-11-02T01:00:00+00:00",
+        "timestamp": 1730509200,
+        "periods": {
+          "first": 1730509200,
+          "second": 1730512800
+        },
+        "venue": {
+          "id": 384,
+          "name": "Estadio Palogrande",
+          "city": "Manizales"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 7
+        }
+      },
+      "league": {
+        "id": 239,
+        "name": "Primera A",
+        "country": "Colombia",
+        "logo": "https://media.api-sports.io/football/leagues/239.png",
+        "flag": "https://media.api-sports.io/flags/co.svg",
+        "season": 2024,
+        "round": "Clausura - 16",
+        "standings": true
+      },
+      "teams": {
+        "home": {
+          "id": 1136,
+          "name": "Once Caldas",
+          "logo": "https://media.api-sports.io/football/teams/1136.png",
+          "winner": false
+        },
+        "away": {
+          "id": 1147,
+          "name": "Fortaleza FC",
+          "logo": "https://media.api-sports.io/football/teams/1147.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 2
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": 0,
+          "away": 2
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1234298,
+        "referee": "D. Espinosa",
+        "timezone": "UTC",
+        "date": "2024-11-02T19:00:00+00:00",
+        "timestamp": 1730574000,
+        "periods": {
+          "first": 1730574000,
+          "second": 1730577600
+        },
+        "venue": {
+          "id": 371,
+          "name": "Estadio Metropolitano de Techo",
+          "city": "Bogotá, D.C."
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 9
+        }
+      },
+      "league": {
+        "id": 239,
+        "name": "Primera A",
+        "country": "Colombia",
+        "logo": "https://media.api-sports.io/football/leagues/239.png",
+        "flag": "https://media.api-sports.io/flags/co.svg",
+        "season": 2024,
+        "round": "Clausura - 16",
+        "standings": true
+      },
+      "teams": {
+        "home": {
+          "id": 1134,
+          "name": "Internacional de Bogota",
+          "logo": "https://media.api-sports.io/football/teams/1134.png",
+          "winner": true
+        },
+        "away": {
+          "id": 1141,
+          "name": "Alianza Valledupar",
+          "logo": "https://media.api-sports.io/football/teams/1141.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 3,
+        "away": 2
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 1
+        },
+        "fulltime": {
+          "home": 3,
+          "away": 2
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    }
+  ]
+}

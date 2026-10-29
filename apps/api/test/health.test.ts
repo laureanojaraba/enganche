@@ -18,7 +18,7 @@ describe('GET /api/health', () => {
 
 describe('loadConfig', () => {
   it('applies defaults and rejects an invalid clock mode', () => {
-    expect(loadConfig({})).toMatchObject({ port: 3000, clockMode: 'simulated' });
+    expect(loadConfig({})).toMatchObject({ port: 3000, clockMode: 'simulated', cacheMode: 'snapshot' });
     expect(() => loadConfig({ CLOCK_MODE: 'fake' })).toThrow();
   });
 });

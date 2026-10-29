@@ -38,12 +38,14 @@ npm run dev                               # web en http://localhost:5173 · API 
 
 ## Variables de entorno (`apps/api/.env`)
 
-| Variable           | Por defecto            | Descripción                                                                                      |
-| ------------------ | ---------------------- | ------------------------------------------------------------------------------------------------ |
-| `PORT`             | `3000`                 | Puerto de la API                                                                                 |
-| `API_FOOTBALL_KEY` | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                      |
-| `CLOCK_MODE`       | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual |
-| `SIM_ANCHOR`       | `2024-11-09T18:00:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                 |
+| Variable           | Por defecto            | Descripción                                                                                                                   |
+| ------------------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `PORT`             | `3000`                 | Puerto de la API                                                                                                              |
+| `API_FOOTBALL_KEY` | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                                                   |
+| `CLOCK_MODE`       | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual                              |
+| `SIM_ANCHOR`       | `2024-11-09T18:00:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
+| `CACHE_MODE`       | `snapshot`             | `snapshot` guarda la primera respuesta y la reutiliza siempre (desarrollo); `ttl` refresca según el tipo de dato (producción) |
+| `CACHE_DIR`        | `.cache`               | Carpeta de snapshots y del contador diario de peticiones (no se versiona)                                                     |
 
 ## Ramas y ambientes
 
