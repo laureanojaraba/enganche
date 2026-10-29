@@ -2,12 +2,12 @@
 id: HU-002
 title: Spike de cobertura del plan gratuito de API-Football
 epic: EP-001
-status: verifying
+status: done
 priority: high
 points: 2
 jira: LDZ-9
 updated: 2026-10-29
-jira_hash: d8df2d03fb5d
+jira_hash: 0b911b220c2d
 ---
 # HU-002 — Spike de cobertura del plan gratuito de API-Football
 
