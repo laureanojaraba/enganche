@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { CompetitionCatalog, HealthStatus } from '@enganche/shared';
+import { CompetitionCatalog, HealthStatus, StandingGroup } from '@enganche/shared';
+import { z } from 'zod';
 import { fetchApi } from './api';
 
 export function useHealth() {
@@ -15,5 +16,16 @@ export function useCompetitions() {
     queryKey: ['competitions'],
     queryFn: ({ signal }) => fetchApi('/api/competitions', CompetitionCatalog, signal),
     staleTime: 60 * 60 * 1000,
+  });
+}
+
+/** Standings change at most once per match day: keep them for 5 minutes. */
+export function useStandings(competitionId: number, enabled = true) {
+  return useQuery({
+    queryKey: ['standings', competitionId],
+    queryFn: ({ signal }) =>
+      fetchApi(`/api/competitions/${competitionId}/standings`, z.array(StandingGroup), signal),
+    staleTime: 5 * 60 * 1000,
+    enabled,
   });
 }

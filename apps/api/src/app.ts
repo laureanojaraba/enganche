@@ -19,7 +19,8 @@ export function buildApp(config: Config, deps: AppDeps = {}, opts: { logger?: bo
   const app = Fastify({ logger: opts.logger ?? false });
   const source = deps.source ?? createSource(config);
   const clock = deps.clock ?? createClock(config);
-  const matches = new MatchService(new ApiFootballProvider(source), clock);
+  const provider = new ApiFootballProvider(source);
+  const matches = new MatchService(provider, clock);
 
   // TRD §6: security headers, a single allowed origin and a per-client rate limit.
   app.register(helmet);
@@ -43,7 +44,7 @@ export function buildApp(config: Config, deps: AppDeps = {}, opts: { logger?: bo
   // Routes go in a child context registered after the plugins, so the rate limit applies to them.
   app.register(async (api) => {
     healthRoutes(api, config);
-    competitionRoutes(api, { competitions: new CompetitionService(source), matches });
+    competitionRoutes(api, { competitions: new CompetitionService(source), matches, provider });
   });
   return app;
 }

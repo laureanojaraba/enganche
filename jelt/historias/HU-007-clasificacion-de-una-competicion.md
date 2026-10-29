@@ -2,12 +2,12 @@
 id: HU-007
 title: Clasificación de una competición
 epic: EP-002
-status: approved
+status: verifying
 priority: high
 points: 3
 jira: LDZ-14
 updated: 2026-10-29
-jira_hash: 4c13c80bb0cb
+jira_hash: 87d8ad1e42a0
 ---
 # HU-007 — Clasificación de una competición
 
@@ -39,11 +39,12 @@ jira_hash: 4c13c80bb0cb
 - Verify: `npx playwright test standings --project=mobile -g "HU-007 AC4"`
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [ ] Textos de la interfaz en los catálogos de español e inglés (pendiente: i18n llega en HU-021)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada y verificada: AC1–AC4 OK. Limitaciones: con el reloj simulado se muestra la tabla final de 2024 (el proveedor no da tablas por fecha); en la Liga BetPlay los cuadrangulares de Apertura y Clausura repiten nombre ("Grupo A/B") | PLAN-008 |

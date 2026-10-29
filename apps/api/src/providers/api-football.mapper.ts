@@ -1,4 +1,4 @@
-import type { Match, MatchEvent, MatchEventType, MatchStatus } from '@enganche/shared';
+import type { Match, MatchEvent, MatchEventType, MatchStatus, StandingRow } from '@enganche/shared';
 
 export type ApiEvent = {
   time: { elapsed: number; extra: number | null };
@@ -106,5 +106,36 @@ export function mapFixture(f: ApiFixture): Match {
     },
     score: home === null || away === null ? null : { home, away },
     ...(venue ? { venue } : {}),
+  };
+}
+
+export type ApiStandingRow = {
+  rank: number;
+  team: { id: number; name: string; logo?: string };
+  points: number;
+  goalsDiff: number;
+  group: string;
+  form: string | null;
+  description: string | null;
+  all: { played: number; win: number; draw: number; lose: number; goals: { for: number; against: number } };
+};
+
+export function mapStanding(r: ApiStandingRow): StandingRow {
+  return {
+    rank: r.rank,
+    team: { id: r.team.id, name: r.team.name, ...(r.team.logo ? { logo: r.team.logo } : {}) },
+    played: r.all.played,
+    won: r.all.win,
+    drawn: r.all.draw,
+    lost: r.all.lose,
+    goalsFor: r.all.goals.for,
+    goalsAgainst: r.all.goals.against,
+    goalDiff: r.goalsDiff,
+    points: r.points,
+    // The provider lists the streak newest first; the UI reads it left (old) to right (recent).
+    form: [...(r.form ?? '')]
+      .filter((c): c is 'W' | 'D' | 'L' => c === 'W' || c === 'D' || c === 'L')
+      .reverse(),
+    ...(r.description ? { description: r.description } : {}),
   };
 }

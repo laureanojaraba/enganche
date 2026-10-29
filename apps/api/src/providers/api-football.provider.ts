@@ -1,5 +1,12 @@
-import type { ApiResponse, Match } from '@enganche/shared';
-import { mapEvent, mapFixture, type ApiEvent, type ApiFixture } from './api-football.mapper';
+import type { ApiResponse, Match, StandingGroup } from '@enganche/shared';
+import {
+  mapEvent,
+  mapFixture,
+  mapStanding,
+  type ApiEvent,
+  type ApiFixture,
+  type ApiStandingRow,
+} from './api-football.mapper';
 import { ProviderUnavailableError, type Source } from './source';
 
 export type FixtureQuery = { league: number; season: number; from?: string; to?: string; round?: string };
@@ -18,6 +25,20 @@ export class ApiFootballProvider {
   async listFixtures(q: FixtureQuery): Promise<ApiResponse<Match[]>> {
     const { body, meta } = await this.source.get<{ response: ApiFixture[] }>('/fixtures', q);
     return { data: body.response.map(mapFixture), meta };
+  }
+
+  /** Tables of a competition, one per group, in the provider's order (league table, cup groups…). */
+  async getStandings(league: number, season: number): Promise<ApiResponse<StandingGroup[]>> {
+    const { body, meta } = await this.source.get<{
+      response: Array<{ league: { standings: ApiStandingRow[][] } }>;
+    }>('/standings', { league, season });
+    const tables = body.response[0]?.league.standings ?? [];
+    return {
+      data: tables
+        .filter((rows) => rows.length > 0)
+        .map((rows) => ({ name: rows[0]!.group, rows: rows.map(mapStanding) })),
+      meta,
+    };
   }
 
   /** Full match (events included) — one request per match on the free plan. */

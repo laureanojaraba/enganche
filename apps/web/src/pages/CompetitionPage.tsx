@@ -1,15 +1,13 @@
-import { useId, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router';
-import { useCompetitions } from '../queries';
+import { StandingsTable } from '../components/StandingsTable';
+import { favoriteTeamIds } from '../favorites';
+import { useCompetitions, useStandings } from '../queries';
 import { CompetitionLogo } from './CompetitionsPage';
 
 const TABS = [
-  { id: 'partidos', label: 'Partidos', placeholder: 'La agenda por jornada llega con la siguiente versión.' },
-  {
-    id: 'clasificacion',
-    label: 'Clasificación',
-    placeholder: 'La tabla de posiciones llega con la siguiente versión.',
-  },
+  { id: 'partidos', label: 'Partidos' },
+  { id: 'clasificacion', label: 'Clasificación' },
 ] as const;
 
 type TabId = (typeof TABS)[number]['id'];
@@ -35,7 +33,6 @@ export function CompetitionPage() {
     );
   }
 
-  const active = TABS.find((t) => t.id === tab)!;
   return (
     <>
       <div className="mb-6 flex items-center gap-4">
@@ -60,7 +57,7 @@ export function CompetitionPage() {
             onClick={() => setTab(t.id)}
             className={`rounded-full px-4 py-2 text-sm font-semibold ${
               tab === t.id
-                ? 'bg-pitch-600 text-white'
+                ? 'bg-pitch-700 text-white'
                 : 'bg-white text-ink-700 hover:bg-pitch-100 dark:bg-pitch-900 dark:text-ink-200'
             }`}
           >
@@ -68,14 +65,32 @@ export function CompetitionPage() {
           </button>
         ))}
       </div>
-      <div
-        id={`${baseId}-panel`}
-        role="tabpanel"
-        aria-labelledby={`${baseId}-tab-${tab}`}
-        className="rounded-xl border border-dashed border-pitch-300 p-6 text-ink-500 dark:border-pitch-700"
-      >
-        {active.placeholder}
+      <div id={`${baseId}-panel`} role="tabpanel" aria-labelledby={`${baseId}-tab-${tab}`}>
+        {tab === 'clasificacion' ? (
+          <StandingsPanel competitionId={competition.id} />
+        ) : (
+          <p className="rounded-xl border border-dashed border-pitch-300 p-6 text-ink-500 dark:border-pitch-700">
+            La agenda por jornada llega con la siguiente versión.
+          </p>
+        )}
       </div>
     </>
+  );
+}
+
+function StandingsPanel({ competitionId }: { competitionId: number }) {
+  const { data, isPending, isError } = useStandings(competitionId);
+  const favorites = useMemo(() => favoriteTeamIds(), []);
+
+  if (isPending) return <p className="text-ink-500">Cargando clasificación…</p>;
+  if (isError) return <p role="alert">No pudimos cargar la clasificación.</p>;
+  if (data.data.length === 0)
+    return <p className="text-ink-500">No hay clasificación para esta competición.</p>;
+  return (
+    <div className="space-y-6">
+      {data.data.map((group, i) => (
+        <StandingsTable key={`${group.name}-${i}`} group={group} favorites={favorites} />
+      ))}
+    </div>
   );
 }
