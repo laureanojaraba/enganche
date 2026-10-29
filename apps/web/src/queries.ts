@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { CompetitionCatalog, HealthStatus, StandingGroup } from '@enganche/shared';
+import { CompetitionCatalog, HealthStatus, RoundsSchedule, StandingGroup } from '@enganche/shared';
 import { z } from 'zod';
 import { fetchApi } from './api';
 
@@ -27,5 +27,14 @@ export function useStandings(competitionId: number, enabled = true) {
       fetchApi(`/api/competitions/${competitionId}/standings`, z.array(StandingGroup), signal),
     staleTime: 5 * 60 * 1000,
     enabled,
+  });
+}
+
+/** The whole season grouped by round; statuses move with the (simulated) clock, so refresh every minute. */
+export function useRounds(competitionId: number) {
+  return useQuery({
+    queryKey: ['rounds', competitionId],
+    queryFn: ({ signal }) => fetchApi(`/api/competitions/${competitionId}/rounds`, RoundsSchedule, signal),
+    staleTime: 60 * 1000,
   });
 }

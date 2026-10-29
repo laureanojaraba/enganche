@@ -34,6 +34,7 @@ export async function stubApi(page: Page) {
   );
   await page.route('**/api/competitions', (r) => r.fulfill({ json: { data: catalog, meta } }));
   await page.route('**/api/competitions/*/standings', (r) => r.fulfill({ json: { data: standings, meta } }));
+  await page.route('**/api/competitions/*/rounds', (r) => r.fulfill({ json: { data: schedule, meta } }));
 }
 
 const teams = ['Barcelona', 'Real Madrid', 'Atlético de Madrid', 'Athletic Club', 'Villarreal', 'Real Betis'];
@@ -71,3 +72,30 @@ export { expect };
 export function hasHorizontalScroll(page: Page) {
   return page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
 }
+
+const fixture = (id: number, home: string, away: string, status: string, extra: object = {}) => ({
+  id,
+  competitionId: 3,
+  season: 2024,
+  round: 'League Stage - 3',
+  kickoffUtc: '2026-10-29T19:00:00.000Z',
+  status,
+  home: { id: id * 10, name: home },
+  away: { id: id * 10 + 1, name: away },
+  score: status === 'scheduled' ? null : { home: 1, away: 1 },
+  ...extra,
+});
+const schedule = {
+  current: 0,
+  rounds: [
+    {
+      name: 'League Stage - 3',
+      matches: [
+        fixture(1, 'Tottenham Hotspur', 'AZ Alkmaar', 'live', { minute: 31 }),
+        fixture(2, 'Fenerbahçe', 'Manchester United', 'halftime'),
+        fixture(3, 'Borussia Mönchengladbach', 'Olympique Lyonnais', 'scheduled'),
+      ],
+    },
+    { name: 'League Stage - 4', matches: [fixture(4, 'Lazio', 'Porto', 'scheduled')] },
+  ],
+};

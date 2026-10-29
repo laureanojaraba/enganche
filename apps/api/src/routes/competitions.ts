@@ -4,6 +4,7 @@ import { findCompetition } from '../catalog/competitions';
 import type { ApiFootballProvider } from '../providers/api-football.provider';
 import type { CompetitionService } from '../services/competition-service';
 import type { MatchService } from '../services/match-service';
+import type { RoundService } from '../services/round-service';
 
 const Params = z.object({ id: z.coerce.number().int().positive() });
 
@@ -48,7 +49,12 @@ function competitionFrom(params: unknown, reply: FastifyReply) {
 
 export function competitionRoutes(
   app: FastifyInstance,
-  deps: { competitions: CompetitionService; matches: MatchService; provider: ApiFootballProvider },
+  deps: {
+    competitions: CompetitionService;
+    matches: MatchService;
+    rounds: RoundService;
+    provider: ApiFootballProvider;
+  },
 ) {
   app.get('/api/competitions', () => deps.competitions.catalog());
 
@@ -58,6 +64,12 @@ export function competitionRoutes(
     const competition = competitionFrom(req.params, reply);
     if (!competition) return reply;
     return deps.matches.listFixtures({ league: competition.id, season: competition.season, ...query.data });
+  });
+
+  app.get('/api/competitions/:id/rounds', async (req, reply) => {
+    const competition = competitionFrom(req.params, reply);
+    if (!competition) return reply;
+    return deps.rounds.schedule(competition);
   });
 
   // Season table as provided (final 2024 table in simulated mode: the provider has no historical tables).

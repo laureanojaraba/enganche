@@ -103,3 +103,19 @@ export type StandingRow = z.infer<typeof StandingRow>;
 
 export const StandingGroup = z.object({ name: z.string(), rows: z.array(StandingRow) });
 export type StandingGroup = z.infer<typeof StandingGroup>;
+
+export const Round = z.object({
+  /** Provider round name, e.g. "Regular Season - 9", "Round of 16" (translated in the UI). */
+  name: z.string(),
+  /** 1 = first leg, 2 = second leg, for two-legged knockout rounds. */
+  leg: z.union([z.literal(1), z.literal(2)]).optional(),
+  matches: z.array(Match),
+});
+export type Round = z.infer<typeof Round>;
+
+export const RoundsSchedule = z.object({
+  /** Index in `rounds` of the round being played, or the next one. */
+  current: z.number().int(),
+  rounds: z.array(Round),
+});
+export type RoundsSchedule = z.infer<typeof RoundsSchedule>;
