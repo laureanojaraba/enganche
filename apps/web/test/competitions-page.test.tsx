@@ -45,9 +45,10 @@ describe('CompetitionsPage', () => {
     expect(screen.getByRole('tabpanel')).toHaveAccessibleName('Clasificación');
   });
 
-  it('redirects the home page to the catalog until the home screen exists', async () => {
+  it('shows a provisional home ("Mis partidos") that links to the catalog', async () => {
     renderApp('/');
-    expect(await screen.findByRole('heading', { level: 1, name: 'Competiciones' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Mis partidos' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Ver competiciones' })).toHaveAttribute('href', '/competiciones');
   });
 
   it('shows an error message when the catalog cannot be loaded', async () => {

@@ -2,12 +2,12 @@
 id: HU-023
 title: Navegación responsive
 epic: EP-007
-status: approved
+status: verifying
 priority: high
 points: 3
 jira: LDZ-30
 updated: 2026-10-29
-jira_hash: 363337f051bb
+jira_hash: 6152469eef3d
 ---
 # HU-023 — Navegación responsive
 
@@ -36,11 +36,12 @@ jira_hash: 363337f051bb
 - Respetar las *safe areas* de iOS (notch, barra de inicio) y el modo oscuro del sistema.
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa (AC2: la parte de la ficha del partido está en CR-002)
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [ ] Textos de la interfaz en los catálogos de español e inglés (pendiente: i18n llega en HU-021)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada: AC1 y AC3 OK; AC2 OK salvo la ficha del partido, que no existe aún (propuesto mover a HU-015 en CR-002). Inicio provisional "Mis partidos" en lugar de redirigir al catálogo | PLAN-007 · CR-002 |
