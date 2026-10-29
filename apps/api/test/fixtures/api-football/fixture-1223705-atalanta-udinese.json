@@ -1,0 +1,1094 @@
+{
+  "get": "fixtures",
+  "parameters": {
+    "id": "1223705"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "fixture": {
+        "id": 1223705,
+        "referee": "M. Di Bello",
+        "timezone": "UTC",
+        "date": "2024-11-10T11:30:00+00:00",
+        "timestamp": 1731238200,
+        "periods": {
+          "first": 1731238200,
+          "second": 1731241800
+        },
+        "venue": {
+          "id": 879,
+          "name": "Gewiss Stadium",
+          "city": "Bergamo"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 5
+        }
+      },
+      "league": {
+        "id": 135,
+        "name": "Serie A",
+        "country": "Italy",
+        "logo": "https://media.api-sports.io/football/leagues/135.png",
+        "flag": "https://media.api-sports.io/flags/it.svg",
+        "season": 2024,
+        "round": "Regular Season - 12",
+        "standings": true
+      },
+      "teams": {
+        "home": {
+          "id": 499,
+          "name": "Atalanta",
+          "logo": "https://media.api-sports.io/football/teams/499.png",
+          "winner": true
+        },
+        "away": {
+          "id": 494,
+          "name": "Udinese",
+          "logo": "https://media.api-sports.io/football/teams/494.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 2,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": 2,
+          "away": 1
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 14,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 18767,
+            "name": "Ademola Lookman"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Var",
+          "detail": "Goal cancelled",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 24,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 30421,
+            "name": "B. Djimsiti"
+          },
+          "assist": {
+            "id": 10097,
+            "name": "Éderson"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 45,
+            "extra": 3
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 22007,
+            "name": "H. Kamara"
+          },
+          "assist": {
+            "id": 1922,
+            "name": "F. Thauvin"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 2286,
+            "name": "D. Zappacosta"
+          },
+          "assist": {
+            "id": 91422,
+            "name": "R. Bellanova"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 56,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 2763,
+            "name": "M. Pašalić"
+          },
+          "assist": {
+            "id": 91422,
+            "name": "R. Bellanova"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 60,
+            "extra": null
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 7591,
+            "name": "S. Lovrić"
+          },
+          "assist": {
+            "id": 182560,
+            "name": "Oier Zarraga"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 60,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 195893,
+            "name": "I. Touré"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Own Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 67,
+            "extra": null
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 1922,
+            "name": "F. Thauvin"
+          },
+          "assist": {
+            "id": 199089,
+            "name": "L. Lucca"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 67,
+            "extra": null
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 22007,
+            "name": "H. Kamara"
+          },
+          "assist": {
+            "id": 19824,
+            "name": "J. Zemura"
+          },
+          "type": "subst",
+          "detail": "Substitution 3",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 68,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 6420,
+            "name": "M. Retegui"
+          },
+          "assist": {
+            "id": 786,
+            "name": "N. Zaniolo"
+          },
+          "type": "subst",
+          "detail": "Substitution 3",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 68,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 178749,
+            "name": "L. Samardžić"
+          },
+          "assist": {
+            "id": 1639,
+            "name": "M. Brescianini"
+          },
+          "type": "subst",
+          "detail": "Substitution 4",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 77,
+            "extra": null
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 6050,
+            "name": "L. Giannetti"
+          },
+          "assist": {
+            "id": 320335,
+            "name": "J. Abankwah"
+          },
+          "type": "subst",
+          "detail": "Substitution 4",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 78,
+            "extra": null
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 19185,
+            "name": "K. Davis"
+          },
+          "assist": {
+            "id": 330599,
+            "name": "Iker Bravo"
+          },
+          "type": "subst",
+          "detail": "Substitution 5",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 84,
+            "extra": null
+          },
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "player": {
+            "id": 195893,
+            "name": "Souleymane Isaak Touré"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": "Foul"
+        },
+        {
+          "time": {
+            "elapsed": 87,
+            "extra": null
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 786,
+            "name": "N. Zaniolo"
+          },
+          "assist": {
+            "id": 866,
+            "name": "J. Cuadrado"
+          },
+          "type": "subst",
+          "detail": "Substitution 5",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 90,
+            "extra": 1
+          },
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "player": {
+            "id": 18767,
+            "name": "Ademola Lookman"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": "Foul"
+        }
+      ],
+      "lineups": [
+        {
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png",
+            "colors": {
+              "player": {
+                "primary": "0054a8",
+                "number": "ffffff",
+                "border": "0054a8"
+              },
+              "goalkeeper": {
+                "primary": "66ff39",
+                "number": "181616",
+                "border": "66ff39"
+              }
+            }
+          },
+          "coach": {
+            "id": 2393,
+            "name": "G. Gasperini",
+            "photo": "https://media.api-sports.io/football/coachs/2393.png"
+          },
+          "formation": "3-4-2-1",
+          "startXI": [
+            {
+              "player": {
+                "id": 30417,
+                "name": "M. Carnesecchi",
+                "number": 29,
+                "pos": "G",
+                "grid": "1:1"
+              }
+            },
+            {
+              "player": {
+                "id": 48119,
+                "name": "O. Kossounou",
+                "number": 3,
+                "pos": "D",
+                "grid": "2:3"
+              }
+            },
+            {
+              "player": {
+                "id": 137976,
+                "name": "I. Hien",
+                "number": 4,
+                "pos": "D",
+                "grid": "2:2"
+              }
+            },
+            {
+              "player": {
+                "id": 30421,
+                "name": "B. Djimsiti",
+                "number": 19,
+                "pos": "D",
+                "grid": "2:1"
+              }
+            },
+            {
+              "player": {
+                "id": 2286,
+                "name": "D. Zappacosta",
+                "number": 77,
+                "pos": "M",
+                "grid": "3:4"
+              }
+            },
+            {
+              "player": {
+                "id": 2763,
+                "name": "M. Pašalić",
+                "number": 8,
+                "pos": "M",
+                "grid": "3:3"
+              }
+            },
+            {
+              "player": {
+                "id": 30432,
+                "name": "M. de Roon",
+                "number": 15,
+                "pos": "M",
+                "grid": "3:2"
+              }
+            },
+            {
+              "player": {
+                "id": 162012,
+                "name": "M. Ruggeri",
+                "number": 22,
+                "pos": "M",
+                "grid": "3:1"
+              }
+            },
+            {
+              "player": {
+                "id": 178749,
+                "name": "L. Samardžić",
+                "number": 24,
+                "pos": "F",
+                "grid": "4:2"
+              }
+            },
+            {
+              "player": {
+                "id": 18767,
+                "name": "A. Lookman",
+                "number": 11,
+                "pos": "F",
+                "grid": "4:1"
+              }
+            },
+            {
+              "player": {
+                "id": 6420,
+                "name": "M. Retegui",
+                "number": 32,
+                "pos": "F",
+                "grid": "5:1"
+              }
+            }
+          ],
+          "substitutes": [
+            {
+              "player": {
+                "id": 10097,
+                "name": "Éderson",
+                "number": 13,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 91422,
+                "name": "R. Bellanova",
+                "number": 16,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 786,
+                "name": "N. Zaniolo",
+                "number": 10,
+                "pos": "F",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 1639,
+                "name": "M. Brescianini",
+                "number": 44,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 866,
+                "name": "J. Cuadrado",
+                "number": 7,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 353609,
+                "name": "I. Sulemana",
+                "number": 6,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 290807,
+                "name": "V. Vlahović",
+                "number": 48,
+                "pos": "F",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 2674,
+                "name": "Rui Patrício",
+                "number": 28,
+                "pos": "G",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 19073,
+                "name": "B. Godfrey",
+                "number": 5,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 30429,
+                "name": "R. Tolói",
+                "number": 2,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 30419,
+                "name": "F. Rossi",
+                "number": 31,
+                "pos": "G",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 383018,
+                "name": "M. Palestra",
+                "number": 27,
+                "pos": "M",
+                "grid": null
+              }
+            }
+          ]
+        },
+        {
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png",
+            "colors": {
+              "player": {
+                "primary": "f5f74e",
+                "number": "1f1f1e",
+                "border": "f5f74e"
+              },
+              "goalkeeper": {
+                "primary": "10d82d",
+                "number": "f1f0e8",
+                "border": "10d82d"
+              }
+            }
+          },
+          "coach": {
+            "id": 1217,
+            "name": "K. Runjaić",
+            "photo": "https://media.api-sports.io/football/coachs/1217.png"
+          },
+          "formation": "3-5-2",
+          "startXI": [
+            {
+              "player": {
+                "id": 143648,
+                "name": "M. Okoye",
+                "number": 40,
+                "pos": "G",
+                "grid": "1:1"
+              }
+            },
+            {
+              "player": {
+                "id": 6050,
+                "name": "L. Giannetti",
+                "number": 30,
+                "pos": "D",
+                "grid": "2:3"
+              }
+            },
+            {
+              "player": {
+                "id": 833,
+                "name": "J. Bijol",
+                "number": 29,
+                "pos": "D",
+                "grid": "2:2"
+              }
+            },
+            {
+              "player": {
+                "id": 195893,
+                "name": "I. Touré",
+                "number": 95,
+                "pos": "D",
+                "grid": "2:1"
+              }
+            },
+            {
+              "player": {
+                "id": 36916,
+                "name": "K. Ehizibue",
+                "number": 19,
+                "pos": "M",
+                "grid": "3:5"
+              }
+            },
+            {
+              "player": {
+                "id": 7591,
+                "name": "S. Lovrić",
+                "number": 8,
+                "pos": "M",
+                "grid": "3:4"
+              }
+            },
+            {
+              "player": {
+                "id": 48047,
+                "name": "J. Karlström",
+                "number": 25,
+                "pos": "M",
+                "grid": "3:3"
+              }
+            },
+            {
+              "player": {
+                "id": 6383,
+                "name": "M. Payero",
+                "number": 5,
+                "pos": "M",
+                "grid": "3:2"
+              }
+            },
+            {
+              "player": {
+                "id": 22007,
+                "name": "H. Kamara",
+                "number": 11,
+                "pos": "M",
+                "grid": "3:1"
+              }
+            },
+            {
+              "player": {
+                "id": 19185,
+                "name": "K. Davis",
+                "number": 9,
+                "pos": "F",
+                "grid": "4:2"
+              }
+            },
+            {
+              "player": {
+                "id": 1922,
+                "name": "F. Thauvin",
+                "number": 10,
+                "pos": "F",
+                "grid": "4:1"
+              }
+            }
+          ],
+          "substitutes": [
+            {
+              "player": {
+                "id": 182560,
+                "name": "Oier Zarraga",
+                "number": 6,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 199089,
+                "name": "L. Lucca",
+                "number": 17,
+                "pos": "F",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 19824,
+                "name": "J. Zemura",
+                "number": 33,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 320335,
+                "name": "J. Abankwah",
+                "number": 4,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 330599,
+                "name": "Iker Bravo",
+                "number": 21,
+                "pos": "F",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 281495,
+                "name": "T. Kristensen",
+                "number": 31,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 197830,
+                "name": "R. Sava",
+                "number": 90,
+                "pos": "G",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 18797,
+                "name": "C. Kabasele",
+                "number": 27,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 142442,
+                "name": "Rui Modesto",
+                "number": 77,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 347644,
+                "name": "A. Atta",
+                "number": 14,
+                "pos": "M",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 20656,
+                "name": "E. Ebosse",
+                "number": 23,
+                "pos": "D",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 189,
+                "name": "D. Padelli",
+                "number": 93,
+                "pos": "G",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 9975,
+                "name": "Brenner",
+                "number": 22,
+                "pos": "F",
+                "grid": null
+              }
+            },
+            {
+              "player": {
+                "id": 541,
+                "name": "J. Ekkelenkamp",
+                "number": 32,
+                "pos": "M",
+                "grid": null
+              }
+            }
+          ]
+        }
+      ],
+      "statistics": [
+        {
+          "team": {
+            "id": 499,
+            "name": "Atalanta",
+            "logo": "https://media.api-sports.io/football/teams/499.png"
+          },
+          "statistics": [
+            {
+              "type": "Shots on Goal",
+              "value": 3
+            },
+            {
+              "type": "Shots off Goal",
+              "value": 4
+            },
+            {
+              "type": "Total Shots",
+              "value": 10
+            },
+            {
+              "type": "Blocked Shots",
+              "value": 3
+            },
+            {
+              "type": "Shots insidebox",
+              "value": 9
+            },
+            {
+              "type": "Shots outsidebox",
+              "value": 1
+            },
+            {
+              "type": "Fouls",
+              "value": 10
+            },
+            {
+              "type": "Corner Kicks",
+              "value": 4
+            },
+            {
+              "type": "Offsides",
+              "value": 2
+            },
+            {
+              "type": "Ball Possession",
+              "value": "54%"
+            },
+            {
+              "type": "Yellow Cards",
+              "value": 1
+            },
+            {
+              "type": "Red Cards",
+              "value": null
+            },
+            {
+              "type": "Goalkeeper Saves",
+              "value": 5
+            },
+            {
+              "type": "Total passes",
+              "value": 426
+            },
+            {
+              "type": "Passes accurate",
+              "value": 327
+            },
+            {
+              "type": "Passes %",
+              "value": "77%"
+            },
+            {
+              "type": "expected_goals",
+              "value": "0.91"
+            },
+            {
+              "type": "goals_prevented",
+              "value": "-0.93"
+            }
+          ]
+        },
+        {
+          "team": {
+            "id": 494,
+            "name": "Udinese",
+            "logo": "https://media.api-sports.io/football/teams/494.png"
+          },
+          "statistics": [
+            {
+              "type": "Shots on Goal",
+              "value": 6
+            },
+            {
+              "type": "Shots off Goal",
+              "value": 3
+            },
+            {
+              "type": "Total Shots",
+              "value": 11
+            },
+            {
+              "type": "Blocked Shots",
+              "value": 2
+            },
+            {
+              "type": "Shots insidebox",
+              "value": 7
+            },
+            {
+              "type": "Shots outsidebox",
+              "value": 4
+            },
+            {
+              "type": "Fouls",
+              "value": 12
+            },
+            {
+              "type": "Corner Kicks",
+              "value": 5
+            },
+            {
+              "type": "Offsides",
+              "value": 0
+            },
+            {
+              "type": "Ball Possession",
+              "value": "46%"
+            },
+            {
+              "type": "Yellow Cards",
+              "value": 1
+            },
+            {
+              "type": "Red Cards",
+              "value": null
+            },
+            {
+              "type": "Goalkeeper Saves",
+              "value": 2
+            },
+            {
+              "type": "Total passes",
+              "value": 365
+            },
+            {
+              "type": "Passes accurate",
+              "value": 271
+            },
+            {
+              "type": "Passes %",
+              "value": "74%"
+            },
+            {
+              "type": "expected_goals",
+              "value": "0.84"
+            },
+            {
+              "type": "goals_prevented",
+              "value": "-0.93"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

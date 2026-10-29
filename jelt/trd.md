@@ -134,9 +134,10 @@ Países: CO (por defecto), AR, MX, CL, PE, EC y US. Un override de partido susti
 - **Fixtures de test:** `SnapshotProvider` lee los JSON grabados en `apps/api/test/fixtures/`, que sí se versionan. Los tests nunca llaman a la API real.
 
 ### Reloj simulado
-- `CLOCK_MODE=simulated` y `SIM_ANCHOR=2024-11-09T18:00:00Z` hacen que el servidor trate esa fecha como "ahora". El reloj avanza en tiempo real desde que arranca el proceso.
-- Las fechas de los partidos se **reproyectan**: `kickoffUtc + (ahora_real − SIM_ANCHOR)`. Así la interfaz muestra "hoy" y "mañana" con fechas actuales.
-- **Partido en vivo simulado:** si un partido de 2024 está "en curso" según el reloj simulado, se calcula el minuto y se filtran los eventos hasta ese minuto. Esto permite probar F3 y F5 en vivo sin un plan premium.
+- `CLOCK_MODE=simulated` y `SIM_ANCHOR=2024-10-24T19:30:00Z` hacen que el servidor trate esa fecha como "ahora". El reloj avanza en tiempo real desde que arranca el proceso.
+- **Por qué esa fecha** (HU-005, elegida sobre los calendarios precargados): en la ventana del 22 al 26 de octubre de 2024 juegan **las 10 competiciones** (jornada 3 de Champions y Europa League, semifinales de Libertadores y Sudamericana, y jornadas de las 6 ligas). Además, a las 19:30 UTC del jueves 24 hay 9 partidos de Europa League en juego. Con `SEED_WINDOW_DAYS=2` son unas 72 fichas, que caben en un día de cuota.
+- Las fechas de los partidos se **reproyectan**: `kickoffUtc + (inicio_real − SIM_ANCHOR)`. Así la interfaz muestra "hoy" y "mañana" con fechas actuales.
+- **Partido en vivo simulado:** la línea temporal sale de `fixture.periods` (inicio de cada parte). El estado y el minuto se derivan del reloj (1.ª parte, descanso, 2.ª parte, final estimado 50 min después del inicio de la 2.ª). Los eventos se filtran hasta el instante actual y el marcador se recalcula con los goles visibles (en los autogoles, `team` es el equipo beneficiado). En los listados, el marcador en vivo sale de la ficha del partido si está en caché; si no, se muestra sin marcador.
 - `CLOCK_MODE=real` en producción con un plan premium.
 
 ### Dónde ver

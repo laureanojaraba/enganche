@@ -5,7 +5,7 @@ const Env = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
   API_FOOTBALL_KEY: z.string().optional(),
   CLOCK_MODE: ClockMode.default('simulated'),
-  SIM_ANCHOR: z.iso.datetime().default('2024-11-09T18:00:00Z'),
+  SIM_ANCHOR: z.iso.datetime().default('2024-10-24T19:30:00Z'),
   CACHE_MODE: z.enum(['snapshot', 'ttl']).default('snapshot'),
   CACHE_DIR: z.string().default('.cache'),
 });
