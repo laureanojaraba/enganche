@@ -63,3 +63,22 @@ export type MatchEvent = z.infer<typeof MatchEvent>;
 
 export const MatchDetail = z.object({ match: Match, events: z.array(MatchEvent) });
 export type MatchDetail = z.infer<typeof MatchDetail>;
+
+export const Competition = z.object({
+  id: z.number().int(),
+  /** Display name (ours, e.g. "Liga BetPlay"), not the provider's. */
+  name: z.string(),
+  /** Country or confederation shown under the name. */
+  region: z.string(),
+  logo: z.url().optional(),
+  type: z.enum(['league', 'cup']),
+  section: z.enum(['leagues', 'international']),
+  season: z.number().int(),
+});
+export type Competition = z.infer<typeof Competition>;
+
+export const CompetitionCatalog = z.object({
+  leagues: z.array(Competition),
+  international: z.array(Competition),
+});
+export type CompetitionCatalog = z.infer<typeof CompetitionCatalog>;
