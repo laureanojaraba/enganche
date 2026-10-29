@@ -1,5 +1,5 @@
 {
-  "name": "@ladiez/api",
+  "name": "@enganche/api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@ladiez/shared": "^0.1.0",
+    "@enganche/shared": "^0.1.0",
     "fastify": "^5.12.7",
     "zod": "^4.6.7"
   },

@@ -11,7 +11,7 @@ jira_hash: 68c5710caeac
 ---
 # HU-024 — PWA instalable con modo sin conexión
 
-**Como** Andrés, **quiero** instalar ladiez en la pantalla de inicio de mi teléfono, **para** abrirla como una app más.
+**Como** Andrés, **quiero** instalar enganche en la pantalla de inicio de mi teléfono, **para** abrirla como una app más.
 
 ## Criterios de aceptación
 ### AC1 — Instalable
@@ -41,3 +41,4 @@ jira_hash: 68c5710caeac
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Proyecto renombrado de ladiez a enganche | Usuario |

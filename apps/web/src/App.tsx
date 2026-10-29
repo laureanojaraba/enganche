@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { apiResponse, HealthStatus } from '@ladiez/shared';
+import { apiResponse, HealthStatus } from '@enganche/shared';
 
 type State = { kind: 'loading' } | { kind: 'ok'; health: HealthStatus } | { kind: 'error' };
 
@@ -22,7 +22,7 @@ export function App() {
 
   return (
     <main>
-      <h1>ladiez</h1>
+      <h1>enganche</h1>
       {state.kind === 'loading' && <p>API: comprobando…</p>}
       {state.kind === 'ok' && (
         <p>

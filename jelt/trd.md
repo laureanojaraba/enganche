@@ -1,10 +1,10 @@
 ---
 id: TRD
-title: ladiez
+title: enganche
 status: approved
 updated: 2026-10-29
 ---
-# TRD — ladiez
+# TRD — enganche
 
 ## 1. Arquitectura
 
@@ -13,7 +13,7 @@ flowchart LR
   subgraph Cliente["Navegador / PWA (iOS, Android, iPad, escritorio)"]
     WEB["React SPA<br/>favoritos en localStorage"]
   end
-  subgraph Servidor["API ladiez (Node.js)"]
+  subgraph Servidor["API enganche (Node.js)"]
     ROUTES["Rutas REST + SSE /live"]
     SVC["Servicios de dominio<br/>(partidos, clasificaciones, dónde ver)"]
     CACHE["Caché TTL<br/>memoria + snapshots en disco"]
@@ -68,7 +68,7 @@ flowchart LR
 - `StandingRow { rank, team, played, won, drawn, lost, gf, ga, gd, points, form, group? }`
 - `Broadcast { country, channel, platform?, url? }`
 
-**Favoritos en el cliente** (`localStorage`, clave `ladiez:favorites`):
+**Favoritos en el cliente** (`localStorage`, clave `enganche:favorites`):
 ```json
 { "version": 1, "teams": [{"id": 1137, "name": "Atlético Nacional"}], "competitions": [239] }
 ```

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-/** Metadata attached to every response of the ladiez API. */
+/** Metadata attached to every response of the enganche API. */
 export const ApiMeta = z.object({
   updatedAt: z.iso.datetime(),
   /** true when served from cache because the provider failed or quota is low. */

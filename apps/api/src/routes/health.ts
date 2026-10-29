@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import type { ApiResponse, HealthStatus } from '@ladiez/shared';
+import type { ApiResponse, HealthStatus } from '@enganche/shared';
 import type { Config } from '../config';
 
 export function healthRoutes(app: FastifyInstance, config: Config) {

@@ -6,5 +6,5 @@ export default defineConfig({
   target: 'node24',
   clean: true,
   // shared se consume como TypeScript: se incluye en el bundle.
-  noExternal: ['@ladiez/shared'],
+  noExternal: ['@enganche/shared'],
 });

@@ -11,7 +11,7 @@ jira_hash: feb965ac09c4
 ---
 # HU-001 — Monorepo, calidad y CI
 
-**Como** desarrollador de ladiez, **quiero** un monorepo con web, API y tipos compartidos, y con calidad automatizada, **para** construir el resto de historias sobre una base consistente.
+**Como** desarrollador de enganche, **quiero** un monorepo con web, API y tipos compartidos, y con calidad automatizada, **para** construir el resto de historias sobre una base consistente.
 
 ## Criterios de aceptación
 ### AC1 — Arranque local

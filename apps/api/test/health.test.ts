@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { apiResponse, HealthStatus } from '@ladiez/shared';
+import { apiResponse, HealthStatus } from '@enganche/shared';
 import { buildApp } from '../src/app';
 import { loadConfig } from '../src/config';
 

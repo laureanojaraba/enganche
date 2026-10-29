@@ -1,10 +1,10 @@
 ---
 id: PERSONAS
-title: ladiez
+title: enganche
 status: draft
 updated: 2026-10-29
 ---
-# Personas — ladiez
+# Personas — enganche
 
 ## Andrés, el hincha multi-liga
 - **Rol / contexto:** 32 años, vive en Medellín. Es hincha de Atlético Nacional y sigue también al Arsenal y a River Plate. Usa sobre todo el iPhone, y a veces el iPad en el sofá.

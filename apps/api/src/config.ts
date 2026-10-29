@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ClockMode } from '@ladiez/shared';
+import { ClockMode } from '@enganche/shared';
 
 const Env = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
