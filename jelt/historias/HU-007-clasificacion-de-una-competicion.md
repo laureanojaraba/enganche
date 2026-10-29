@@ -2,12 +2,12 @@
 id: HU-007
 title: Clasificación de una competición
 epic: EP-002
-status: verifying
+status: done
 priority: high
 points: 3
 jira: LDZ-14
 updated: 2026-10-29
-jira_hash: 87d8ad1e42a0
+jira_hash: 93820135aeca
 ---
 # HU-007 — Clasificación de una competición
 
