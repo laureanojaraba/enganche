@@ -2,12 +2,12 @@
 id: HU-002
 title: Spike de cobertura del plan gratuito de API-Football
 epic: EP-001
-status: approved
+status: verifying
 priority: high
 points: 2
 jira: LDZ-9
 updated: 2026-10-29
-jira_hash: 8728853d383a
+jira_hash: 07d2ab50b404
 ---
 # HU-002 — Spike de cobertura del plan gratuito de API-Football
 
@@ -36,11 +36,12 @@ jira_hash: 8728853d383a
 - Si la Liga BetPlay u otra competición no tiene cobertura completa en 2024, evaluar 2023.
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [x] Textos de la interfaz: no aplica (script interno)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada y verificada: AC1 (dry-run), AC2 (30 peticiones ≤ 40), AC3 (TRD §3 y PRD R1/R3 actualizados) | PLAN-002 |

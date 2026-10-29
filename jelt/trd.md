@@ -74,19 +74,23 @@ flowchart LR
 ```
 El campo `version` permite migrar los favoritos a una cuenta en la fase 2.
 
-**Competiciones soportadas** (`apps/api/config/competitions.json`). Los IDs son de API-Football y se confirmarán en el spike (HU de la épica de datos):
-| Sección | Competición | ID API-Football | Temporada dev |
-|---|---|---|---|
-| Ligas | Liga BetPlay (Colombia, Primera A) | 239 | 2024 |
-| Ligas | Liga Profesional Argentina | 128 | 2024 |
-| Ligas | Serie A | 135 | 2024 (24/25) |
-| Ligas | Premier League | 39 | 2024 (24/25) |
-| Ligas | LaLiga | 140 | 2024 (24/25) |
-| Ligas | Brasileirão Série A | 71 | 2024 |
-| Internacionales | Copa Libertadores | 13 | 2024 |
-| Internacionales | Copa Sudamericana | 11 | 2024 |
-| Internacionales | UEFA Champions League | 2 | 2024 (24/25) |
-| Internacionales | UEFA Europa League | 3 | 2024 (24/25) |
+**Competiciones soportadas** (`apps/api/config/competitions.json`). IDs y temporada **confirmados por el spike HU-002** el 2026-10-29 (`jelt/spikes/api-football-cobertura.md`):
+| Sección | Competición | Nombre en API-Football | ID | Temporada dev |
+|---|---|---|---|---|
+| Ligas | Liga BetPlay (Colombia) | Primera A | 239 | 2024 |
+| Ligas | Liga Profesional Argentina | Liga Profesional Argentina | 128 | 2024 |
+| Ligas | Serie A | Serie A (Italy) | 135 | 2024 (24/25) |
+| Ligas | Premier League | Premier League | 39 | 2024 (24/25) |
+| Ligas | LaLiga | La Liga | 140 | 2024 (24/25) |
+| Ligas | Brasileirão Série A | Serie A (Brazil) | 71 | 2024 |
+| Internacionales | Copa Libertadores | CONMEBOL Libertadores | 13 | 2024 |
+| Internacionales | Copa Sudamericana | CONMEBOL Sudamericana | 11 | 2024 |
+| Internacionales | UEFA Champions League | UEFA Champions League | 2 | 2024 (24/25) |
+| Internacionales | UEFA Europa League | UEFA Europa League | 3 | 2024 (24/25) |
+
+- **Plan Free (confirmado):** temporadas **2022–2024**, según el mensaje literal de la API: *"Free plans do not have access to this season, try from 2022 to 2024"*. Límites: 100 peticiones al día y unas 10 por minuto. La temporada actual de la API es 2026, bloqueada en Free.
+- **Cobertura 2024:** las 10 competiciones declaran eventos, alineaciones, estadísticas de partido y clasificación.
+- **Nombres:** se muestran nuestros nombres comerciales (por ejemplo "Liga BetPlay", "Brasileirão"), no los de la API. Dos competiciones se llaman "Serie A" en la API.
 
 **Dónde ver** (`apps/api/data/broadcasts.json`):
 ```json
@@ -186,6 +190,8 @@ Los favoritos se envían como parámetros de consulta porque el servidor no tien
 
 - Las correcciones urgentes de producción salen de `main` (`hotfix/*`), vuelven a `main` por PR y después se integran en `staging` y `develop`.
 - Una historia pasa a `done` cuando su PR se fusiona en `develop` con el CI en verde. Su paso por `staging` y `main` se registra en el comentario de Jira de la versión.
+- **Limpieza de ramas:** GitHub borra automáticamente la rama de origen al fusionar una PR. `develop`, `staging` y `main` están protegidas contra el borrado, así que las PR de promoción no las eliminan.
+- **Protecciones:** `main` y `staging` exigen PR con el check `quality` en verde, sin push directo ni force-push, también para administradores. `develop` admite push directo, pero no borrado ni force-push.
 
 ### Pipeline
 - **Local:** `npm run dev` arranca la web (Vite, :5173) y la API (:3000) con un proxy `/api`. El reloj es simulado y los datos salen de snapshots.

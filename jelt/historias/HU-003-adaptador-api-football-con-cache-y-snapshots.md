@@ -40,6 +40,7 @@ jira_hash: 25e444169cdd
 
 ## Notas técnicas
 - Interfaz `FootballProvider` en `apps/api/src/providers/`. `SnapshotProvider` para tests con fixtures versionadas.
+- Hallazgo del spike HU-002: el contador de `/status` llega con retraso (marcó 14 tras 30 peticiones) y hay un límite de unas 10 por minuto. La protección de cuota (AC4) debe llevar su propio contador diario además de `/status`, y espaciar las peticiones.
 
 ## Definición de Hecho
 - [ ] Todos los AC tienen un test que pasa
