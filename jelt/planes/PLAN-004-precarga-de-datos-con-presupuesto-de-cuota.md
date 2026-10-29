@@ -2,7 +2,7 @@
 id: PLAN-004
 title: Precarga de datos con presupuesto de cuota
 story: HU-004
-status: draft
+status: done
 updated: 2026-10-29
 ---
 # PLAN-004 — Plan para HU-004: Precarga de datos con presupuesto de cuota
