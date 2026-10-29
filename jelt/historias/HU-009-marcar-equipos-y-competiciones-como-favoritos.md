@@ -7,7 +7,7 @@ priority: high
 points: 3
 jira: LDZ-16
 updated: 2026-10-29
-jira_hash: 135b5f18f830
+jira_hash: 8f3972da7178
 ---
 # HU-009 — Marcar equipos y competiciones como favoritos
 
@@ -28,7 +28,7 @@ jira_hash: 135b5f18f830
 
 ### AC3 — Formato versionado
 - **Dado** que guardo favoritos
-- **Cuando** leo `localStorage["ladiez:favorites"]`
+- **Cuando** leo `localStorage["enganche:favorites"]`
 - **Entonces** contiene `{"version":1,"teams":[...],"competitions":[...]}`, y si encuentra datos corruptos los ignora sin romper la app
 - Verify: `npm test -w apps/web -- favorites-storage -t "HU-009 AC3"`
 
@@ -47,3 +47,4 @@ jira_hash: 135b5f18f830
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Proyecto renombrado de ladiez a enganche | Usuario |

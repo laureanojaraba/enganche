@@ -1,10 +1,10 @@
 ---
 id: TRD
-title: ladiez
+title: enganche
 status: approved
 updated: 2026-10-29
 ---
-# TRD — ladiez
+# TRD — enganche
 
 ## 1. Arquitectura
 
@@ -13,7 +13,7 @@ flowchart LR
   subgraph Cliente["Navegador / PWA (iOS, Android, iPad, escritorio)"]
     WEB["React SPA<br/>favoritos en localStorage"]
   end
-  subgraph Servidor["API ladiez (Node.js)"]
+  subgraph Servidor["API enganche (Node.js)"]
     ROUTES["Rutas REST + SSE /live"]
     SVC["Servicios de dominio<br/>(partidos, clasificaciones, dónde ver)"]
     CACHE["Caché TTL<br/>memoria + snapshots en disco"]
@@ -68,7 +68,7 @@ flowchart LR
 - `StandingRow { rank, team, played, won, drawn, lost, gf, ga, gd, points, form, group? }`
 - `Broadcast { country, channel, platform?, url? }`
 
-**Favoritos en el cliente** (`localStorage`, clave `ladiez:favorites`):
+**Favoritos en el cliente** (`localStorage`, clave `enganche:favorites`):
 ```json
 { "version": 1, "teams": [{"id": 1137, "name": "Atlético Nacional"}], "competitions": [239] }
 ```
@@ -176,8 +176,21 @@ Los favoritos se envían como parámetros de consulta porque el servidor no tien
 - **Zona horaria:** los tests fijan `TZ=America/Bogota` y también se ejecutan con otra zona para detectar errores de conversión.
 
 ## 8. Entornos, CI/CD y despliegue
+### Ramas y ambientes
+| Rama | Ambiente | Para qué | Entra por |
+|---|---|---|---|
+| `feat/HU-xxx-*`, `fix/BUG-xxx-*` | Local | Desarrollo de una historia o bug | Se crea desde `develop` |
+| `develop` | Desarrollo | Integración continua del equipo; demo interna | PR desde ramas de historia (CI en verde) |
+| `staging` | Pruebas (QA / externos) | Validación con el BA y usuarios externos antes de publicar | PR `develop → staging` al cerrar un conjunto de historias |
+| `main` | Producción | Versión publicada | PR `staging → main` tras la validación; se etiqueta la versión (`vX.Y.Z`) |
+
+- Las correcciones urgentes de producción salen de `main` (`hotfix/*`), vuelven a `main` por PR y después se integran en `staging` y `develop`.
+- Una historia pasa a `done` cuando su PR se fusiona en `develop` con el CI en verde. Su paso por `staging` y `main` se registra en el comentario de Jira de la versión.
+
+### Pipeline
 - **Local:** `npm run dev` arranca la web (Vite, :5173) y la API (:3000) con un proxy `/api`. El reloj es simulado y los datos salen de snapshots.
-- **CI (GitHub Actions):** install → lint → typecheck → test → build en cada PR. Playwright se ejecuta en `main`.
+- **CI (GitHub Actions):** install → lint → formato → typecheck → test → build en cada PR y push a `develop`, `staging` y `main`. Playwright se ejecuta desde `staging`.
+- **Despliegue por rama** (cuando se elija proveedor): `develop` → ambiente de desarrollo, `staging` → ambiente de pruebas con URL compartible, `main` → producción.
 - **Despliegue de demo (portafolio):**
   - Frontend en Cloudflare Pages o Vercel, en plan gratuito.
   - API en Render o Fly.io, en plan gratuito o de bajo coste.
@@ -196,3 +209,4 @@ Los favoritos se envían como parámetros de consulta porque el servidor no tien
 | ADR-6 | SSE para el tiempo real | WebSocket, polling desde el cliente | Las actualizaciones van en un solo sentido y es más simple de operar |
 | ADR-7 | Sin base de datos en el MVP | PostgreSQL desde el inicio | No hay usuarios ni datos propios aún. Se añadirá en la fase 2 |
 | ADR-8 | Canales en un JSON versionado | Panel de administración | Decisión Q2 del PRD |
+| ADR-9 | Ramas `develop` → `staging` → `main` (un ambiente cada una) | Trunk-based con solo `main` | Separar desarrollo, pruebas con externos y producción, a petición del usuario |

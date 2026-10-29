@@ -1,5 +1,15 @@
+# jelt-sl
 .jelt-sl/.env
 .jelt-sl/state.json
+
+# Secretos
 .env
 !.env.example
+
+# Dependencias y builds
 node_modules/
+dist/
+coverage/
+
+# Snapshots de la API de datos (HU-003)
+apps/api/.cache/

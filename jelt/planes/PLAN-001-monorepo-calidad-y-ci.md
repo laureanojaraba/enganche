@@ -2,7 +2,7 @@
 id: PLAN-001
 title: Monorepo, calidad y CI
 story: HU-001
-status: draft
+status: done
 updated: 2026-10-29
 ---
 # PLAN-001 — Plan para HU-001: Monorepo, calidad y CI

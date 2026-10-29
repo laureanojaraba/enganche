@@ -2,16 +2,16 @@
 id: HU-001
 title: Monorepo, calidad y CI
 epic: EP-001
-status: planned
+status: done
 priority: high
 points: 3
 jira: LDZ-2
 updated: 2026-10-29
-jira_hash: d7c035e6572b
+jira_hash: 1eec7973038e
 ---
 # HU-001 — Monorepo, calidad y CI
 
-**Como** desarrollador de ladiez, **quiero** un monorepo con web, API y tipos compartidos, y con calidad automatizada, **para** construir el resto de historias sobre una base consistente.
+**Como** desarrollador de enganche, **quiero** un monorepo con web, API y tipos compartidos, y con calidad automatizada, **para** construir el resto de historias sobre una base consistente.
 
 ## Criterios de aceptación
 ### AC1 — Arranque local
@@ -37,11 +37,12 @@ jira_hash: d7c035e6572b
 - `.env.example` en `apps/api` con `API_FOOTBALL_KEY`, `CLOCK_MODE` y `SIM_ANCHOR`.
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [ ] Textos de la interfaz en los catálogos de español e inglés (pendiente: i18n llega en HU-021)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada y verificada: AC1, AC2 y AC3 OK | PLAN-001 |

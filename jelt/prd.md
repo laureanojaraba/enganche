@@ -1,15 +1,15 @@
 ---
 id: PRD
-title: ladiez
+title: enganche
 status: approved
 updated: 2026-10-29
 ---
-# PRD — ladiez
+# PRD — enganche
 
 ## 1. Resumen y problema
 Los aficionados que siguen equipos de varias ligas (por ejemplo, un colombiano que sigue a su club de la Liga BetPlay y a un equipo de la Premier) tienen que saltar entre varias apps y webs para saber **cuándo juegan sus equipos, dónde se ven y cómo va el partido**. Las apps generalistas muestran demasiadas ligas, y la información de qué canal transmite cada partido en Colombia/LATAM está dispersa.
 
-**ladiez** es una web responsive (y luego una app móvil) centrada en **mis equipos y mis competiciones**: agenda personal, partidos en vivo, estadísticas y dónde ver cada partido desde Colombia y LATAM.
+**enganche** es una web responsive (y luego una app móvil) centrada en **mis equipos y mis competiciones**: agenda personal, partidos en vivo, estadísticas y dónde ver cada partido desde Colombia y LATAM.
 
 Es un proyecto personal que sirve para probar el skill `jelt-sl` y que puede acabar en un portafolio.
 
@@ -144,3 +144,4 @@ El detalle de cada persona está en `personas.md`.
 | 2026-10-29 | Proyecto renombrado a ladiez; se añade US a "dónde ver" (Q1 resuelta) | Usuario |
 | 2026-10-29 | R1: se desarrolla con temporadas pasadas y premium a evaluar. Q2: archivo de canales y API con TV como objetivo. PRD aprobado | Usuario |
 | 2026-10-29 | F2/F3: bienvenida con equipos colombianos primero, que se puede omitir; portada sin favoritos | CR-001 (LDZ-17) |
+| 2026-10-29 | Proyecto renombrado de ladiez a enganche | Usuario |

@@ -1,5 +1,5 @@
 {
-  "name": "ladiez",
+  "name": "enganche",
   "language": "es",
   "docsDir": "jelt",
   "profile": "standard",
@@ -26,6 +26,14 @@
       "todo": "To Do",
       "inProgress": "In Progress",
       "done": "Done"
+    }
+  },
+  "git": {
+    "integrationBranch": "develop",
+    "branches": {
+      "develop": "desarrollo",
+      "staging": "pruebas con externos",
+      "main": "producción"
     }
   }
 }
