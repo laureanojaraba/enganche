@@ -2,7 +2,7 @@
 id: HU-008
 title: Buscar equipos
 epic: EP-003
-status: ba-review
+status: approved
 priority: medium
 points: 2
 jira: LDZ-15

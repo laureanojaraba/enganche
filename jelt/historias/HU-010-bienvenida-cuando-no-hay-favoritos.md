@@ -2,7 +2,7 @@
 id: HU-010
 title: Bienvenida cuando no hay favoritos
 epic: EP-003
-status: ba-review
+status: approved
 priority: medium
 points: 2
 jira: LDZ-17

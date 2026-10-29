@@ -1,13 +1,13 @@
 ---
 id: CR-001
 title: "Bienvenida: priorizar equipos colombianos y permitir saltarla"
-status: refined
+status: done
 story: HU-010
 epic: EP-003
 source: LDZ-17
 jira: LDZ-32
 updated: 2026-10-29
-jira_hash: 7ff33f7313e5
+jira_hash: 1ce61b5f2613
 ---
 # CR-001 — Bienvenida: priorizar equipos colombianos y permitir saltarla
 
@@ -32,3 +32,5 @@ jira_hash: 7ff33f7313e5
 ## Decisión
 **Aceptado** (2026-10-29). La duda sobre la portada sin favoritos la resolvió el usuario: se acepta la propuesta.
 Aplicado en HU-010 (AC2 modificado, AC4 nuevo), HU-012 (AC5 nuevo) y PRD F2/F3. HU-010 vuelve a revisión del BA.
+
+**Cerrado** (2026-10-29): el BA aprobó la nueva versión de HU-010 (LDZ-17).
