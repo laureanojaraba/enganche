@@ -1,12 +1,12 @@
 ---
 id: BUG-002
 title: Cuota de API-Football agotable desde fuera y sin protecciones de seguridad
-status: fixed
+status: closed
 severity: high
 story: HU-003
 jira: LDZ-34
 updated: 2026-10-29
-jira_hash: dafaa69968cd
+jira_hash: 9d78c05b417e
 ---
 # BUG-002 — Cuota de API-Football agotable desde fuera y sin protecciones de seguridad
 

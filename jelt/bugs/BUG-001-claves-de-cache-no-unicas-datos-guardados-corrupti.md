@@ -1,12 +1,12 @@
 ---
 id: BUG-001
 title: "Claves de caché no únicas: datos guardados corruptibles"
-status: fixed
+status: closed
 severity: high
 story: HU-003
 jira: LDZ-33
 updated: 2026-10-29
-jira_hash: 99f19e28b8b9
+jira_hash: c0fa853d48e0
 ---
 # BUG-001 — Claves de caché no únicas: datos guardados corruptibles
 

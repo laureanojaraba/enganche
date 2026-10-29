@@ -1,12 +1,12 @@
 ---
 id: BUG-003
 title: Filtros de fecha sin convertir a la temporada de datos en modo simulado
-status: fixed
+status: closed
 severity: medium
 story: HU-005
 jira: LDZ-35
 updated: 2026-10-29
-jira_hash: ff9110d00f9e
+jira_hash: 47531ec3e455
 ---
 # BUG-003 — Filtros de fecha sin convertir a la temporada de datos en modo simulado
 
