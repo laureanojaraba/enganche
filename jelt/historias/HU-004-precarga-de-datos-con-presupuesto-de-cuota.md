@@ -2,7 +2,7 @@
 id: HU-004
 title: Precarga de datos con presupuesto de cuota
 epic: EP-001
-status: ba-review
+status: approved
 priority: high
 points: 3
 jira: LDZ-11

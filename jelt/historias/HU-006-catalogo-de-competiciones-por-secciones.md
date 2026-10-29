@@ -2,7 +2,7 @@
 id: HU-006
 title: Catálogo de competiciones por secciones
 epic: EP-002
-status: ba-review
+status: approved
 priority: high
 points: 3
 jira: LDZ-13
