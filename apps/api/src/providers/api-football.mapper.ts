@@ -1,10 +1,21 @@
-import type { Match, MatchStatus } from '@enganche/shared';
+import type { Match, MatchEvent, MatchEventType, MatchStatus } from '@enganche/shared';
+
+export type ApiEvent = {
+  time: { elapsed: number; extra: number | null };
+  team: { id: number; name: string };
+  player: { id: number | null; name: string | null };
+  assist: { id: number | null; name: string | null };
+  type: string;
+  detail: string;
+};
 
 // Subset of the API-Football v3 /fixtures payload that we consume.
 export type ApiFixture = {
   fixture: {
     id: number;
     date: string;
+    /** Unix seconds when each half started (needed by the simulated clock). */
+    periods?: { first: number | null; second: number | null };
     venue?: { id: number | null; name: string | null; city: string | null };
     status: { long: string; short: string; elapsed: number | null; extra?: number | null };
   };
@@ -14,7 +25,34 @@ export type ApiFixture = {
     away: { id: number; name: string; logo?: string };
   };
   goals: { home: number | null; away: number | null };
+  /** Only present when a single fixture is requested by id. */
+  events?: ApiEvent[];
 };
+
+function eventType(e: ApiEvent): MatchEventType {
+  if (e.type === 'Goal') {
+    if (e.detail === 'Own Goal') return 'own_goal';
+    if (e.detail === 'Penalty') return 'penalty';
+    if (e.detail === 'Missed Penalty') return 'missed_penalty';
+    return 'goal';
+  }
+  if (e.type === 'Card') return e.detail === 'Yellow Card' ? 'card_yellow' : 'card_red';
+  if (e.type === 'subst') return 'sub';
+  return 'var';
+}
+
+export function mapEvent(e: ApiEvent): MatchEvent {
+  const type = eventType(e);
+  return {
+    minute: e.time.elapsed,
+    ...(e.time.extra ? { extra: e.time.extra } : {}),
+    type,
+    ...(type === 'var' ? { detail: e.detail } : {}),
+    teamId: e.team.id,
+    player: e.player.name ?? '—',
+    ...(e.assist.name ? { assist: e.assist.name } : {}),
+  };
+}
 
 const STATUS: Record<string, MatchStatus> = {
   TBD: 'scheduled',

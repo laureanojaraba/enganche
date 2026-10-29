@@ -2,12 +2,12 @@
 id: HU-005
 title: Reloj simulado y partidos en vivo simulados
 epic: EP-001
-status: approved
+status: verifying
 priority: high
 points: 5
 jira: LDZ-12
 updated: 2026-10-29
-jira_hash: 9ccae1acb02d
+jira_hash: a346b40a3379
 ---
 # HU-005 — Reloj simulado y partidos en vivo simulados
 
@@ -42,11 +42,12 @@ jira_hash: 9ccae1acb02d
 - Hallazgo de HU-004: con `SIM_ANCHOR=2024-11-09` hay partidos de las 6 ligas (6–10 por liga), pero ninguno de las 4 copas internacionales (8–10 nov 2024). Para que la demo muestre copas, elige un ancla con jornada de copa (p. ej. martes/miércoles de Champions) o permite varias anclas, y precarga sus fichas con `SEED_WINDOW_DAYS` o una segunda ejecución.
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [x] Textos de la interfaz: no aplica (backend)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Ancla por defecto 2024-10-24T19:30Z (10/10 competiciones en ±2 días); implementada y verificada: AC1–AC4 OK | PLAN-005 · decisión del usuario (opción 2) |

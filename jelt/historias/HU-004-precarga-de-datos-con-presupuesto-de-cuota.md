@@ -2,12 +2,12 @@
 id: HU-004
 title: Precarga de datos con presupuesto de cuota
 epic: EP-001
-status: verifying
+status: done
 priority: high
 points: 3
 jira: LDZ-11
 updated: 2026-10-29
-jira_hash: 2392233efcb5
+jira_hash: 4f52d80cb605
 ---
 # HU-004 — Precarga de datos con presupuesto de cuota
 

@@ -29,7 +29,7 @@ const cache = new CachedSource({
 });
 
 const budget = Math.min(Number(process.env.SEED_DAILY_BUDGET ?? 90), quota.remaining());
-const windowDays = Number(process.env.SEED_WINDOW_DAYS ?? 1);
+const windowDays = Number(process.env.SEED_WINDOW_DAYS ?? 2);
 console.log(
   `Precarga en ${dir} · presupuesto ${budget} · ventana ${config.simAnchor} ± ${windowDays} día(s)`,
 );

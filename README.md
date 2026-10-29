@@ -47,11 +47,11 @@ El plan gratuito de API-Football permite unas 100 peticiones al día. `npm run s
 | `PORT`              | `3000`                 | Puerto de la API                                                                                                              |
 | `API_FOOTBALL_KEY`  | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                                                   |
 | `CLOCK_MODE`        | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual                              |
-| `SIM_ANCHOR`        | `2024-11-09T18:00:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
+| `SIM_ANCHOR`        | `2024-10-24T19:30:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
 | `CACHE_MODE`        | `snapshot`             | `snapshot` guarda la primera respuesta y la reutiliza siempre (desarrollo); `ttl` refresca según el tipo de dato (producción) |
 | `CACHE_DIR`         | `.cache`               | Carpeta de snapshots y del contador diario de peticiones (no se versiona)                                                     |
 | `SEED_DAILY_BUDGET` | `90`                   | Peticiones máximas por ejecución de `npm run seed`                                                                            |
-| `SEED_WINDOW_DAYS`  | `1`                    | Días alrededor de `SIM_ANCHOR` con fichas completas de partido                                                                |
+| `SEED_WINDOW_DAYS`  | `2`                    | Días alrededor de `SIM_ANCHOR` con fichas completas de partido                                                                |
 
 ## Ramas y ambientes
 
