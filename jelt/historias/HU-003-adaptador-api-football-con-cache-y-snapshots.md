@@ -2,12 +2,12 @@
 id: HU-003
 title: Adaptador API-Football con caché y snapshots
 epic: EP-001
-status: ba-review
+status: approved
 priority: high
 points: 5
 jira: LDZ-10
 updated: 2026-10-29
-jira_hash: 25e444169cdd
+jira_hash: 380f27915672
 ---
 # HU-003 — Adaptador API-Football con caché y snapshots
 
@@ -40,6 +40,7 @@ jira_hash: 25e444169cdd
 
 ## Notas técnicas
 - Interfaz `FootballProvider` en `apps/api/src/providers/`. `SnapshotProvider` para tests con fixtures versionadas.
+- Hallazgo del spike HU-002: el contador de `/status` llega con retraso (marcó 14 tras 30 peticiones) y hay un límite de unas 10 por minuto. La protección de cuota (AC4) debe llevar su propio contador diario además de `/status`, y espaciar las peticiones.
 
 ## Definición de Hecho
 - [ ] Todos los AC tienen un test que pasa

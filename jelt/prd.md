@@ -130,9 +130,9 @@ El detalle de cada persona está en `personas.md`.
 ## 8. Supuestos, riesgos y preguntas abiertas
 | # | Tipo | Descripción | Responsable |
 |---|---|---|---|
-| R1 | Riesgo alto, mitigado | Según varios reportes, el **plan gratuito de API-Football no incluye la temporada actual**: solo da acceso a temporadas pasadas, aproximadamente 2022–2024. **Decisión:** todo el diseño y el desarrollo se hacen con datos reales de una temporada pasada (2024) usando un "reloj simulado". Después, el usuario evaluará un plan premium para tener datos actuales y en vivo. Cambiar de plan o de proveedor no debe requerir cambios en el frontend. | Usuario |
+| R1 | Riesgo alto, mitigado | **Confirmado por el spike HU-002 (2026-10-29):** el plan gratuito de API-Football **no incluye la temporada actual (2026)**; solo da acceso a 2022–2024, con 100 peticiones al día y unas 10 por minuto. Las 10 competiciones están disponibles en 2024. **Decisión:** todo el diseño y el desarrollo se hacen con datos reales de una temporada pasada (2024) usando un "reloj simulado". Después, el usuario evaluará un plan premium para tener datos actuales y en vivo. Cambiar de plan o de proveedor no debe requerir cambios en el frontend. | Usuario |
 | R2 | Riesgo | Los derechos de TV cambian cada temporada y por país. La tabla de "dónde ver" necesita mantenimiento manual. | Usuario |
-| R3 | Riesgo | Algunas competiciones (por ejemplo, la Liga BetPlay) pueden tener menos cobertura de estadísticas o alineaciones en la API. La interfaz debe ocultar las secciones vacías. | Equipo |
+| R3 | Riesgo bajo | El spike HU-002 confirma que en 2024 las 10 competiciones (incluida la Liga BetPlay) declaran eventos, alineaciones, estadísticas y clasificación. Queda el riesgo de huecos en partidos concretos; la interfaz debe ocultar las secciones vacías. | Equipo |
 | R4 | Supuesto | Hay un solo usuario por dispositivo y los favoritos no se sincronizan entre dispositivos en el MVP. | — |
 | Q1 | Resuelta | Países del selector de "dónde ver": CO (por defecto), AR, MX, CL, PE, EC y US. | Usuario |
 | Q2 | Resuelta | Para el MVP, la tabla de "dónde ver" es un archivo de datos versionado en el repo, sin panel de administración. **Objetivo futuro:** pasar a un proveedor cuya API incluya los canales de TV por partido (por ejemplo, Sportmonks "TV stations"; está por evaluar). Por eso la fuente de canales también va detrás de un adaptador. | Usuario |
@@ -145,3 +145,4 @@ El detalle de cada persona está en `personas.md`.
 | 2026-10-29 | R1: se desarrolla con temporadas pasadas y premium a evaluar. Q2: archivo de canales y API con TV como objetivo. PRD aprobado | Usuario |
 | 2026-10-29 | F2/F3: bienvenida con equipos colombianos primero, que se puede omitir; portada sin favoritos | CR-001 (LDZ-17) |
 | 2026-10-29 | Proyecto renombrado de ladiez a enganche | Usuario |
+| 2026-10-29 | R1 confirmado (Free = 2022–2024) y R3 reducido por el spike | HU-002 (LDZ-9) |
