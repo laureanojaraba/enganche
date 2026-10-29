@@ -2,12 +2,12 @@
 id: HU-006
 title: Catálogo de competiciones por secciones
 epic: EP-002
-status: verifying
+status: done
 priority: high
 points: 3
 jira: LDZ-13
 updated: 2026-10-29
-jira_hash: 07c5f746a9c0
+jira_hash: 2e4ae0c87c19
 ---
 # HU-006 — Catálogo de competiciones por secciones
 
