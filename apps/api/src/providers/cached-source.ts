@@ -26,6 +26,8 @@ export type CachedSourceOptions = {
   now?: () => number;
   /** When true, the provider is not called and cached data is served as stale. */
   isQuotaLow?: () => boolean;
+  /** Entries kept in memory (least recently used are dropped; disk keeps everything). */
+  maxMemoryEntries?: number;
 };
 
 /** Memory + disk cache in front of the provider, with stale fallback when it fails or quota is low. */
@@ -33,9 +35,15 @@ export class CachedSource implements Source {
   private readonly memory = new Map<string, Entry>();
   private readonly inflight = new Map<string, Promise<SourceResult>>();
   private readonly now: () => number;
+  private readonly maxMemory: number;
 
   constructor(private readonly opts: CachedSourceOptions) {
     this.now = opts.now ?? Date.now;
+    this.maxMemory = opts.maxMemoryEntries ?? 500;
+  }
+
+  memorySize() {
+    return this.memory.size;
   }
 
   /** True when the request is already cached (any age); never touches the network. */
@@ -81,12 +89,22 @@ export class CachedSource implements Source {
     return path.join(this.opts.dir, `${key}.json`);
   }
 
+  /** Map insertion order doubles as LRU order: re-inserting moves a key to the end. */
+  private remember(key: string, entry: Entry) {
+    this.memory.delete(key);
+    this.memory.set(key, entry);
+    while (this.memory.size > this.maxMemory) this.memory.delete(this.memory.keys().next().value!);
+  }
+
   private read(key: string): Entry | undefined {
     const hit = this.memory.get(key);
-    if (hit) return hit;
+    if (hit) {
+      this.remember(key, hit);
+      return hit;
+    }
     try {
       const entry = JSON.parse(fs.readFileSync(this.file(key), 'utf8')) as Entry;
-      this.memory.set(key, entry);
+      this.remember(key, entry);
       return entry;
     } catch {
       return undefined;
@@ -94,7 +112,7 @@ export class CachedSource implements Source {
   }
 
   private write(key: string, entry: Entry) {
-    this.memory.set(key, entry);
+    this.remember(key, entry);
     fs.mkdirSync(this.opts.dir, { recursive: true });
     fs.writeFileSync(this.file(key), JSON.stringify(entry));
   }

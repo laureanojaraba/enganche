@@ -11,11 +11,22 @@ export class MatchService {
   ) {}
 
   async listFixtures(q: FixtureQuery): Promise<ApiResponse<Match[]>> {
-    const res = await this.provider.listFixtures(q);
-    if (this.clock.mode === 'real') return res;
+    if (this.clock.mode === 'real') return this.provider.listFixtures(q);
+
+    // Simulated mode reads the whole season calendar (downloaded by the seed, so no new cache keys
+    // or provider calls) and filters it here. from/to are display days, compared after projecting
+    // each kickoff to display time (BUG-003).
+    const res = await this.provider.listFixtures({ league: q.league, season: q.season });
+    const start = q.from && `${q.from}T00:00:00.000Z`;
+    const end = q.to && `${q.to}T23:59:59.999Z`;
+    const inRange = (m: Match) => {
+      const k = this.clock.project(m.kickoffUtc);
+      return (!start || k >= start) && (!end || k <= end) && (!q.round || m.round === q.round);
+    };
+
     const now = this.clock.dataNow();
     const data = await Promise.all(
-      res.data.map(async (m) => {
+      res.data.filter(inRange).map(async (m) => {
         const sim = simulateMatch(m, [], {}, now).match;
         if (sim.status !== 'live' && sim.status !== 'halftime') return this.display(sim);
         // Listings carry no events: the live score comes from the match detail when it is cached.

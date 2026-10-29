@@ -1,6 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { ProviderError, type Params, type Source, type SourceResult } from './source';
+import {
+  ProviderError,
+  ProviderUnavailableError,
+  type Params,
+  type Source,
+  type SourceResult,
+} from './source';
 
 const DEFAULT_BASE = 'https://v3.football.api-sports.io';
 
@@ -64,18 +70,22 @@ export type HttpSourceOptions = {
   fetch?: typeof fetch;
   /** Minimum gap between requests; the free plan allows ~10 per minute. */
   minIntervalMs?: number;
+  /** Requests allowed to wait in line; beyond that callers get an immediate error (BUG-002). */
+  maxQueue?: number;
 };
 
 /** Direct HTTP access to API-Football v3. */
 export class HttpSource implements Source {
   private readonly opts: Required<Omit<HttpSourceOptions, 'fetch'>> & { fetch: typeof fetch };
   private queue: Promise<unknown> = Promise.resolve();
+  private pending = 0;
   private lastAt = 0;
 
   constructor(opts: HttpSourceOptions) {
     this.opts = {
       baseUrl: DEFAULT_BASE,
       minIntervalMs: 6500,
+      maxQueue: 20,
       fetch: globalThis.fetch,
       ...opts,
     };
@@ -86,8 +96,12 @@ export class HttpSource implements Source {
   }
 
   get<T>(path: string, params: Params = {}): Promise<SourceResult<T>> {
+    if (this.pending >= this.opts.maxQueue) {
+      return Promise.reject(new ProviderUnavailableError('Too many provider requests waiting'));
+    }
+    this.pending++;
     // Serialize requests so the per-minute spacing holds under concurrency.
-    const run = this.queue.then(() => this.request<T>(path, params));
+    const run = this.queue.then(() => this.request<T>(path, params)).finally(() => this.pending--);
     this.queue = run.catch(() => undefined);
     return run;
   }

@@ -1,12 +1,12 @@
 ---
 id: BUG-002
 title: Cuota de API-Football agotable desde fuera y sin protecciones de seguridad
-status: triaged
+status: fixed
 severity: high
 story: HU-003
 jira: LDZ-34
 updated: 2026-10-29
-jira_hash: 03b987e644f4
+jira_hash: dafaa69968cd
 ---
 # BUG-002 — Cuota de API-Football agotable desde fuera y sin protecciones de seguridad
 
@@ -27,7 +27,7 @@ Cada valor nuevo es un fallo de caché que va a la red y gasta cuota. No hay rat
 REV-001 hallazgos #2, #6 y #8.
 
 ## Causa raíz
-<!-- Se rellena al corregir. -->
+El servidor podía llamar a la red ante cualquier fallo de caché, con entradas libres y sin límites. **Corrección:** (1) con el reloj simulado, o sin clave, el servidor **solo lee los datos guardados** (`SnapshotSource`): la cuota solo la gasta `npm run seed`; (2) validación estricta de `round` (regex, hasta 40 caracteres) y de `from`/`to` (from ≤ to, rango de 31 días como máximo); (3) `@fastify/rate-limit` (120 peticiones por minuto e IP, `RATE_LIMIT_MAX`), `@fastify/helmet` y `@fastify/cors` limitado a `CORS_ORIGIN`; (4) cola de `HttpSource` acotada (20) y caché en memoria LRU (500 entradas); (5) manejador de errores: `ProviderUnavailableError` → `503 DATA_UNAVAILABLE` con mensaje genérico y el resto → `500 INTERNAL`.
 
 ## Test de regresión
 - Verify: `npm test -w apps/api -- security -t "BUG-002"`

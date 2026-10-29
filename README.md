@@ -21,6 +21,8 @@ npm run dev                               # web en http://localhost:5173 · API 
 
 El plan gratuito de API-Football permite unas 100 peticiones al día. `npm run seed -w apps/api` descarga en `apps/api/.cache/` las competiciones, equipos, calendarios y clasificaciones de la temporada 2024, y después las fichas de los partidos alrededor de `SIM_ANCHOR`. Si se queda sin cuota, vuelve a ejecutarlo al día siguiente: continúa donde lo dejó.
 
+Con `CLOCK_MODE=simulated` (por defecto), el servidor **solo usa los datos ya descargados** y nunca gasta cuota; solo `npm run seed` llama a API-Football.
+
 ## Estructura
 
 | Ruta              | Contenido                                    |
@@ -42,16 +44,18 @@ El plan gratuito de API-Football permite unas 100 peticiones al día. `npm run s
 
 ## Variables de entorno (`apps/api/.env`)
 
-| Variable            | Por defecto            | Descripción                                                                                                                   |
-| ------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `PORT`              | `3000`                 | Puerto de la API                                                                                                              |
-| `API_FOOTBALL_KEY`  | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                                                   |
-| `CLOCK_MODE`        | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual                              |
-| `SIM_ANCHOR`        | `2024-10-24T19:30:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
-| `CACHE_MODE`        | `snapshot`             | `snapshot` guarda la primera respuesta y la reutiliza siempre (desarrollo); `ttl` refresca según el tipo de dato (producción) |
-| `CACHE_DIR`         | `.cache`               | Carpeta de snapshots y del contador diario de peticiones (no se versiona)                                                     |
-| `SEED_DAILY_BUDGET` | `90`                   | Peticiones máximas por ejecución de `npm run seed`                                                                            |
-| `SEED_WINDOW_DAYS`  | `2`                    | Días alrededor de `SIM_ANCHOR` con fichas completas de partido                                                                |
+| Variable            | Por defecto             | Descripción                                                                                                                   |
+| ------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `PORT`              | `3000`                  | Puerto de la API                                                                                                              |
+| `API_FOOTBALL_KEY`  | —                       | Clave de [API-Football](https://dashboard.api-football.com)                                                                   |
+| `CLOCK_MODE`        | `simulated`             | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual                              |
+| `SIM_ANCHOR`        | `2024-10-24T19:30:00Z`  | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
+| `CACHE_MODE`        | `snapshot`              | `snapshot` guarda la primera respuesta y la reutiliza siempre (desarrollo); `ttl` refresca según el tipo de dato (producción) |
+| `CACHE_DIR`         | `.cache`                | Carpeta de snapshots y del contador diario de peticiones (no se versiona)                                                     |
+| `RATE_LIMIT_MAX`    | `120`                   | Peticiones por minuto e IP a nuestra API                                                                                      |
+| `CORS_ORIGIN`       | `http://localhost:5173` | Único origen web autorizado (CORS)                                                                                            |
+| `SEED_DAILY_BUDGET` | `90`                    | Peticiones máximas por ejecución de `npm run seed`                                                                            |
+| `SEED_WINDOW_DAYS`  | `2`                     | Días alrededor de `SIM_ANCHOR` con fichas completas de partido                                                                |
 
 ## Ramas y ambientes
 

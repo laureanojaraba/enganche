@@ -1,12 +1,12 @@
 ---
 id: BUG-001
 title: "Claves de caché no únicas: datos guardados corruptibles"
-status: triaged
+status: fixed
 severity: high
 story: HU-003
 jira: LDZ-33
 updated: 2026-10-29
-jira_hash: a61092605917
+jira_hash: 99f19e28b8b9
 ---
 # BUG-001 — Claves de caché no únicas: datos guardados corruptibles
 
@@ -27,7 +27,7 @@ Ambos pares producen la misma clave: el saneado y el separador `k-v_k-v` son amb
 REV-001 hallazgo #1 (revisión independiente de EP-001).
 
 ## Causa raíz
-<!-- Se rellena al corregir. -->
+La clave se construía saneando `ruta + k-v_k-v`: el saneado (`[^a-zA-Z0-9._-]` → `-`) y el separador no eran reversibles. **Corrección:** clave = prefijo legible + SHA-1 (16 hex) de la petición canónica (JSON de ruta y parámetros ordenados, valores como texto). `migrateCacheDir` renombra al vuelo los archivos con el formato antiguo usando el `get` y los `parameters` que API-Football incluye en cada respuesta. Los 70 archivos guardados se migraron **sin gastar cuota**; la migración también se ejecuta sola al arrancar.
 
 ## Test de regresión
 - Verify: `npm test -w apps/api -- cache -t "BUG-001"`
