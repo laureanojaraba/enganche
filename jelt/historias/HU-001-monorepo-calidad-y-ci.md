@@ -2,7 +2,7 @@
 id: HU-001
 title: Monorepo, calidad y CI
 epic: EP-001
-status: planned
+status: verifying
 priority: high
 points: 3
 jira: LDZ-2
@@ -37,11 +37,12 @@ jira_hash: d7c035e6572b
 - `.env.example` en `apps/api` con `API_FOOTBALL_KEY`, `CLOCK_MODE` y `SIM_ANCHOR`.
 
 ## Definición de Hecho
-- [ ] Todos los AC tienen un test que pasa
+- [x] Todos los AC tienen un test que pasa
 - [ ] Revisión de código hecha
-- [ ] Textos de la interfaz en los catálogos de español e inglés (si aplica)
+- [ ] Textos de la interfaz en los catálogos de español e inglés (pendiente: i18n llega en HU-021)
 
 ## Historial
 | Fecha | Cambio | Origen |
 |---|---|---|
 | 2026-10-29 | Creación | — |
+| 2026-10-29 | Implementada y verificada: AC1, AC2 y AC3 OK | PLAN-001 |
