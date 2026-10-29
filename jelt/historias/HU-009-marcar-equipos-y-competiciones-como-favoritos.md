@@ -7,7 +7,7 @@ priority: high
 points: 3
 jira: LDZ-16
 updated: 2026-10-29
-jira_hash: 135b5f18f830
+jira_hash: 8f3972da7178
 ---
 # HU-009 — Marcar equipos y competiciones como favoritos
 

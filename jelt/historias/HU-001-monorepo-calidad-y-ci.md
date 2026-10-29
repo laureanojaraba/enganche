@@ -7,7 +7,7 @@ priority: high
 points: 3
 jira: LDZ-2
 updated: 2026-10-29
-jira_hash: feb965ac09c4
+jira_hash: 1eec7973038e
 ---
 # HU-001 — Monorepo, calidad y CI
 

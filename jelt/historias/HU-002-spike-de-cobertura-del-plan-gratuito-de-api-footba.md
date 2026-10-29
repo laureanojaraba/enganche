@@ -7,7 +7,7 @@ priority: high
 points: 2
 jira: LDZ-9
 updated: 2026-10-29
-jira_hash: 0b44ac637230
+jira_hash: 8728853d383a
 ---
 # HU-002 — Spike de cobertura del plan gratuito de API-Football
 

@@ -7,7 +7,7 @@ priority: medium
 points: 3
 jira: LDZ-31
 updated: 2026-10-29
-jira_hash: 68c5710caeac
+jira_hash: 51ad4a885ec8
 ---
 # HU-024 — PWA instalable con modo sin conexión
 
