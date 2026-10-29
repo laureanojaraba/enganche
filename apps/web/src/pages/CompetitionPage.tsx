@@ -1,8 +1,9 @@
 import { useId, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router';
+import { RoundSchedule } from '../components/RoundSchedule';
 import { StandingsTable } from '../components/StandingsTable';
 import { favoriteTeamIds } from '../favorites';
-import { useCompetitions, useStandings } from '../queries';
+import { useCompetitions, useRounds, useStandings } from '../queries';
 import { CompetitionLogo } from './CompetitionsPage';
 
 const TABS = [
@@ -69,9 +70,7 @@ export function CompetitionPage() {
         {tab === 'clasificacion' ? (
           <StandingsPanel competitionId={competition.id} />
         ) : (
-          <p className="rounded-xl border border-dashed border-pitch-300 p-6 text-ink-500 dark:border-pitch-700">
-            La agenda por jornada llega con la siguiente versión.
-          </p>
+          <RoundsPanel competitionId={competition.id} />
         )}
       </div>
     </>
@@ -93,4 +92,11 @@ function StandingsPanel({ competitionId }: { competitionId: number }) {
       ))}
     </div>
   );
+}
+
+function RoundsPanel({ competitionId }: { competitionId: number }) {
+  const { data, isPending, isError } = useRounds(competitionId);
+  if (isPending) return <p className="text-ink-500">Cargando partidos…</p>;
+  if (isError) return <p role="alert">No pudimos cargar los partidos.</p>;
+  return <RoundSchedule schedule={data.data} />;
 }

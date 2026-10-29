@@ -11,6 +11,7 @@ import { competitionRoutes } from './routes/competitions';
 import { healthRoutes } from './routes/health';
 import { CompetitionService } from './services/competition-service';
 import { MatchService } from './services/match-service';
+import { RoundService } from './services/round-service';
 
 export type AppDeps = { source?: Source; clock?: Clock };
 
@@ -44,7 +45,12 @@ export function buildApp(config: Config, deps: AppDeps = {}, opts: { logger?: bo
   // Routes go in a child context registered after the plugins, so the rate limit applies to them.
   app.register(async (api) => {
     healthRoutes(api, config);
-    competitionRoutes(api, { competitions: new CompetitionService(source), matches, provider });
+    competitionRoutes(api, {
+      competitions: new CompetitionService(source),
+      matches,
+      rounds: new RoundService(matches),
+      provider,
+    });
   });
   return app;
 }
