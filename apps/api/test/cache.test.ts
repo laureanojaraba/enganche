@@ -160,3 +160,24 @@ describe('HttpSource', () => {
     expect(quota.remaining()).toBe(98);
   });
 });
+
+describe('HttpSource quota sync', () => {
+  it('syncs the daily counter with the x-ratelimit-requests-remaining header', async () => {
+    const quota = new QuotaCounter({ file: path.join(dir, 'quota.json'), limit: 100 });
+    const fakeFetch = (async () =>
+      new Response(JSON.stringify({ errors: [], response: [] }), {
+        status: 200,
+        headers: { 'x-ratelimit-requests-remaining': '42' },
+      })) as unknown as typeof fetch;
+    const http = new HttpSource({ apiKey: 'k', fetch: fakeFetch, quota, minIntervalMs: 0 });
+    await http.get('/teams', { id: 1 });
+    expect(quota.remaining()).toBe(42);
+  });
+
+  it('never lowers the local count when the header is behind', () => {
+    const quota = new QuotaCounter({ file: path.join(dir, 'quota.json'), limit: 100 });
+    for (let i = 0; i < 10; i++) quota.increment();
+    quota.syncRemaining(95);
+    expect(quota.remaining()).toBe(90);
+  });
+});

@@ -17,6 +17,10 @@ cp apps/api/.env.example apps/api/.env   # y completa API_FOOTBALL_KEY si la tie
 npm run dev                               # web en http://localhost:5173 · API en http://localhost:3000
 ```
 
+## Datos de desarrollo
+
+El plan gratuito de API-Football permite unas 100 peticiones al día. `npm run seed -w apps/api` descarga en `apps/api/.cache/` las competiciones, equipos, calendarios y clasificaciones de la temporada 2024, y después las fichas de los partidos alrededor de `SIM_ANCHOR`. Si se queda sin cuota, vuelve a ejecutarlo al día siguiente: continúa donde lo dejó.
+
 ## Estructura
 
 | Ruta              | Contenido                                    |
@@ -38,14 +42,16 @@ npm run dev                               # web en http://localhost:5173 · API 
 
 ## Variables de entorno (`apps/api/.env`)
 
-| Variable           | Por defecto            | Descripción                                                                                                                   |
-| ------------------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `PORT`             | `3000`                 | Puerto de la API                                                                                                              |
-| `API_FOOTBALL_KEY` | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                                                   |
-| `CLOCK_MODE`       | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual                              |
-| `SIM_ANCHOR`       | `2024-11-09T18:00:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
-| `CACHE_MODE`       | `snapshot`             | `snapshot` guarda la primera respuesta y la reutiliza siempre (desarrollo); `ttl` refresca según el tipo de dato (producción) |
-| `CACHE_DIR`        | `.cache`               | Carpeta de snapshots y del contador diario de peticiones (no se versiona)                                                     |
+| Variable            | Por defecto            | Descripción                                                                                                                   |
+| ------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `PORT`              | `3000`                 | Puerto de la API                                                                                                              |
+| `API_FOOTBALL_KEY`  | —                      | Clave de [API-Football](https://dashboard.api-football.com)                                                                   |
+| `CLOCK_MODE`        | `simulated`            | `simulated` proyecta la temporada de desarrollo a fechas actuales; `real` usa los datos tal cual                              |
+| `SIM_ANCHOR`        | `2024-11-09T18:00:00Z` | Fecha de la temporada que se trata como "ahora" en modo simulado                                                              |
+| `CACHE_MODE`        | `snapshot`             | `snapshot` guarda la primera respuesta y la reutiliza siempre (desarrollo); `ttl` refresca según el tipo de dato (producción) |
+| `CACHE_DIR`         | `.cache`               | Carpeta de snapshots y del contador diario de peticiones (no se versiona)                                                     |
+| `SEED_DAILY_BUDGET` | `90`                   | Peticiones máximas por ejecución de `npm run seed`                                                                            |
+| `SEED_WINDOW_DAYS`  | `1`                    | Días alrededor de `SIM_ANCHOR` con fichas completas de partido                                                                |
 
 ## Ramas y ambientes
 

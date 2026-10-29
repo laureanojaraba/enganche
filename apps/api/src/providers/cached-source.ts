@@ -38,6 +38,11 @@ export class CachedSource implements Source {
     this.now = opts.now ?? Date.now;
   }
 
+  /** True when the request is already cached (any age); never touches the network. */
+  has(path: string, params: Params = {}): boolean {
+    return this.read(cacheKey(path, params)) !== undefined;
+  }
+
   get<T>(path: string, params: Params = {}): Promise<SourceResult<T>> {
     const key = cacheKey(path, params);
     const pending = this.inflight.get(key);
