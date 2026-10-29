@@ -13,3 +13,5 @@ coverage/
 
 # Snapshots de la API de datos (HU-003)
 apps/api/.cache/
+test-results/
+playwright-report/

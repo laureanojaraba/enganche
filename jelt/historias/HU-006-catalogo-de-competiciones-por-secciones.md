@@ -7,7 +7,7 @@ priority: high
 points: 3
 jira: LDZ-13
 updated: 2026-10-29
-jira_hash: 2e4ae0c87c19
+jira_hash: ecb62a4fd59a
 ---
 # HU-006 — Catálogo de competiciones por secciones
 
@@ -42,3 +42,4 @@ jira_hash: 2e4ae0c87c19
 |---|---|---|
 | 2026-10-29 | Creación | — |
 | 2026-10-29 | Implementada y verificada: AC1–AC3 OK; 0 peticiones a API-Football (datos precargados) | PLAN-006 |
+| 2026-10-29 | "/" deja de redirigir al catálogo: muestra el inicio provisional "Mis partidos" (HU-023) | HU-023 |
