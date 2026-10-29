@@ -33,7 +33,28 @@ export async function stubApi(page: Page) {
     r.fulfill({ json: { data: { status: 'ok', clockMode: 'simulated', version: '0.1.0' }, meta } }),
   );
   await page.route('**/api/competitions', (r) => r.fulfill({ json: { data: catalog, meta } }));
+  await page.route('**/api/competitions/*/standings', (r) => r.fulfill({ json: { data: standings, meta } }));
 }
+
+const teams = ['Barcelona', 'Real Madrid', 'Atlético de Madrid', 'Athletic Club', 'Villarreal', 'Real Betis'];
+const standings = [
+  {
+    name: 'LaLiga',
+    rows: teams.map((name, i) => ({
+      rank: i + 1,
+      team: { id: 500 + i, name },
+      played: 38,
+      won: 20 - i,
+      drawn: 8,
+      lost: 10 + i,
+      goalsFor: 70 - i * 3,
+      goalsAgainst: 35 + i,
+      goalDiff: 35 - i * 4,
+      points: 88 - i * 4,
+      form: ['W', 'D', 'L', 'W', 'W'],
+    })),
+  },
+];
 
 export const ROUTES = ['/', '/competiciones', '/competicion/39', '/favoritos', '/ajustes'];
 

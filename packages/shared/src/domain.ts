@@ -82,3 +82,24 @@ export const CompetitionCatalog = z.object({
   international: z.array(Competition),
 });
 export type CompetitionCatalog = z.infer<typeof CompetitionCatalog>;
+
+export const StandingRow = z.object({
+  rank: z.number().int(),
+  team: TeamRef,
+  played: z.number().int(),
+  won: z.number().int(),
+  drawn: z.number().int(),
+  lost: z.number().int(),
+  goalsFor: z.number().int(),
+  goalsAgainst: z.number().int(),
+  goalDiff: z.number().int(),
+  points: z.number().int(),
+  /** Last results, oldest → newest. */
+  form: z.array(z.enum(['W', 'D', 'L'])),
+  /** What the position gives access to, e.g. "Champions League", "Relegation". */
+  description: z.string().optional(),
+});
+export type StandingRow = z.infer<typeof StandingRow>;
+
+export const StandingGroup = z.object({ name: z.string(), rows: z.array(StandingRow) });
+export type StandingGroup = z.infer<typeof StandingGroup>;
